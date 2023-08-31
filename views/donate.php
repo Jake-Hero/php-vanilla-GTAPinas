@@ -28,20 +28,14 @@
 </head>
 
 <body>
-    <div class="container vh-100">
     <div class="container-fluid vh-100">
 
-        <div class="row d-flex justify-content-center align-items-center h-50">
-                    
-            <div class="col-lg-5 col-xs-12">
-                <h1 style="font-size: 80px; font-family: 'Roboto'; color: white;">
-                    Currently under development.
-                </h1>
+        <div class="card">
+            <div class="card-body">
+                
             </div>
-            
         </div>
 
-    </div>
     </div>
 </body>
 

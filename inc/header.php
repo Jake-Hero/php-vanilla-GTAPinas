@@ -19,6 +19,10 @@
                 </li>
 
                 <li class="nav-tem">
+                    <a class="nav-link" href="./?page=login">Login</a>
+                </li>
+
+                <li class="nav-tem">
                     <a class="nav-link" href="./?page=donate">Donate</a>
                 </li>
 
