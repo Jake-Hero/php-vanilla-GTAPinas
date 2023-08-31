@@ -1,6 +1,7 @@
 <?php 
 
 define('DIR_BASE',      dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR);
+define('DIR_NAME',      'GTAPinas-Site');
 
 define('DIR_ROOT',      DIR_BASE . DIRECTORY_SEPARATOR);
 define('SITE_NAME',     'GTA Pinas Roleplay');
@@ -25,4 +26,4 @@ define('DIR_PICTURES',  './assets/pictures/');
 <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Font -->
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<link rel='stylesheet' href="./css/style.css">

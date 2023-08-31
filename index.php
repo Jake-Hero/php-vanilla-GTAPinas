@@ -3,8 +3,10 @@
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
-    require("./inc/config.php");
-    require("./inc/header.php");
+    require(dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . "GTAPinas-Site" . DIRECTORY_SEPARATOR . "inc/config.php");
+    require(DIR_BASE . "inc/db.php");
+    require(DIR_BASE . "inc/header.php");
+    require(DIR_BASE . "inc/functions.php");
 
     if(!isset($_GET['page'])) 
     {
