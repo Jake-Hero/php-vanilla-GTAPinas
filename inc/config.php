@@ -14,3 +14,15 @@ define('DIR_ASSETS',    DIR_ROOT . 'assets' . DIRECTORY_SEPARATOR);
 define('DIR_PICTURES',  './assets/pictures/');
 
 ?>
+
+<!-- CSS -->
+<link href= "./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="nope!" onload="this.media='all'">
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- JavaScript -->
+<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Font -->
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>

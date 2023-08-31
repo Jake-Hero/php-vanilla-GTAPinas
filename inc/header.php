@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top shadow-5-strong">
     <div class="container">
-        <a class="navbar-brand" href="./dashboard.php">
+        <a class="navbar-brand" href="./?page=home">
             <img src=<?php echo DIR_PICTURES . 'gtapinas_logo.png' ?> alt="GTAPINASLOGO" height="150">
         </a>
 
