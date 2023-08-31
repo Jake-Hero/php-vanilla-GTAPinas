@@ -3,7 +3,8 @@
 define('DIR_BASE',      dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR);
 
 define('DIR_ROOT',      DIR_BASE . DIRECTORY_SEPARATOR);
-define('SITE_NAME',     'pinasProject');
+define('SITE_NAME',     'GTA Pinas Roleplay');
+define('SITE_DEV',      'Cipher');
 
 define('DIR_VIEWS',     DIR_ROOT . 'views' . DIRECTORY_SEPARATOR);
 define('DIR_CSS',       DIR_ROOT . 'css' . DIRECTORY_SEPARATOR);

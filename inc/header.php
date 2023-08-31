@@ -18,6 +18,14 @@
                     <a class="nav-link" href="./?page=home">Home</a>
                 </li>
 
+                <li class="nav-tem">
+                    <a class="nav-link" href="./?page=donate">Donate</a>
+                </li>
+
+                <li class="nav-tem">
+                    <a class="nav-link" href="https://gtapinas.xyz/discord">Discord</a>
+                </li>
+
             </ul>   
         </div>
     </div>
