@@ -7,6 +7,8 @@
     <link href= "./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="nope!" onload="this.media='all'">
     <title><?php echo SITE_NAME; ?> - Home Page</title>
 
+    <link rel="shortcut icon" href="./favicon.ico"/>
+
     <style>
         html {
             position: relative;
