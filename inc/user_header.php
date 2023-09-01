@@ -11,15 +11,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">       
+        <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">       
                 
                 <li class="nav-tem">
                     <a class="nav-link" href="./?page=home">Home</a>
-                </li>
-
-                <li class="nav-tem">
-                    <a class="nav-link" href="./?page=login">Login</a>
                 </li>
 
                 <li class="nav-tem">
@@ -29,6 +25,21 @@
                 <li class="nav-tem">
                     <a class="nav-link" href="https://gtapinas.xyz/discord">Discord</a>
                 </li>
+
+            </ul>   
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">       
+                
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $_SESSION['USER']['Username']; ?>
+                    </a>        
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./?page=logout">Logout</a>
+                    </div>
+                </li>  
 
             </ul>   
         </div>

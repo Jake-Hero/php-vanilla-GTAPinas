@@ -17,13 +17,15 @@ define('DIR_PICTURES',  './assets/pictures/');
 ?>
 
 <!-- CSS -->
+<link rel='stylesheet' href="./css/style.css">
+<link href= "./assets/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet" media="nope!" onload="this.media='all'">
 <link href= "./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="nope!" onload="this.media='all'">
 
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <!-- JavaScript -->
+<script src= "https://unpkg.com/@popperjs/core@2"></script>
 <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Font -->
-<link rel='stylesheet' href="./css/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">

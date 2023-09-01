@@ -1,3 +1,8 @@
+<?php 
+    require(DIR_BASE . "inc/header_checker.php");
+    isLoggedIn();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
