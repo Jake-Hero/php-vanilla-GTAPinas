@@ -1,3 +1,8 @@
+<?php 
+    require(DIR_BASE . "inc/header_checker.php");
+    checkLoggedIn();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,58 +10,57 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     <title><?php echo SITE_NAME; ?> - Home Page</title>
-
-    <style>
-        html {
-            position: relative;
-            min-height: 100%;
-        }
-
-        body {
-            overflow: auto;
-
-            position: relative;
-            width: 100%;
-            min-height: 100%;
-            background-image: url(<?php echo DIR_PICTURES . 'background.png'; ?>);
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: block;
-            background-attachment: fixed;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container-fluid vh-100">
 
-        <div class="row d-flex justify-content-center align-items-center h-50">
-                    
-            <div class="col-lg-5 col-xs-12">
+        <div class="row py-5">
+            <div class="col-lg-3 col-md-3 col-xs-12 float-none mx-auto">
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header">
+                        <h5 class="text-center">
+                            <i class="fa fa-user"></i> Account Login
+                        </h5>
+                    </div>
 
                     <div class="card-body">
-                        <div class="container">
-                            <form method="POST">
-                                <label class="form-label">Username</label>
-                                <input class="form-control" type="text" placeholder="Username or Email" name="email" id="emailForm" />
+                        <form method="POST">
+                            <div id="ajax"></div>
 
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input class="form-control" type="text" placeholder="Email Address" name="email" id="emailForm" />
+                            </div>
+
+                            <div class="form-group">
                                 <label class="form-label">Password</label>
                                 <input class="form-control" type="password" placeholder="Password" name="password" id="passForm" />
+                            </div>
 
-                                <div class="py-3 mt-3">
-                                    <input type="submit" value="Login" class="btn btn-info w-100 text-white" />
-                                </div>
-                            </form>
-                        </div>
+                            <div class="py-3 mt-3">
+                                <button type="submit" class="btn btn-info w-100 text-white" onclick="return loginUser()">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            
         </div>
 
     </div>
+
+	<script type="text/javascript">
+        $(document).ready(function()
+        {
+            setInterval(function(){
+                $("#message").slideUp("slow");
+            }, 6000);
+        });
+	</script>
+
+    <script src="./js/account.js" type="text/javascript"></script>
 </body>
 
 <?php require(DIR_INC . 'footer.php') ?>
