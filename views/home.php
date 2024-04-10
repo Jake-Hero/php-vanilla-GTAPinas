@@ -19,12 +19,14 @@
         <div class="row d-flex justify-content-center align-items-center h-50">
                     
             <div class="col-lg-5 col-xs-12">
-                <h1 style="font-size: 80px; color: white;">
+            <center><h1 style="font-size: 80px; color: white;">
                     <?php echo SITE_NAME; ?>
-                </h1>
-                <h5 style="font-size: 24px; color: white;">Begin your journey with us</h5>
+                </h1></center>
+                <center><h5 style="font-size: 24px; color: white;">Begin your journey with us</h5></center>
 
-                <a href="https://gtapinas.xyz/discord" class="btn border text-white">Join Now!</a>
+                <center><br><a href="https://gtapinas.xyz/discord" class="btn border text-white" style="width: 100%;">Join Now!</a></center>
+
+
             </div>
             
         </div>
