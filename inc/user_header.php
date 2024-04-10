@@ -34,7 +34,7 @@
                 
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['USER']['Username']; ?>
+                        <?php echo $_SESSION['USER']['username']; ?>
                     </a>        
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="./?page=logout">Logout</a>

@@ -2,7 +2,7 @@
 $host 			= 	'localhost';
 $user 			= 	'root';
 $password 		= 	'';
-$database_name 	= 	'gta_pinas';
+$database_name 	= 	'renegade';
 
 try
 {

@@ -90,43 +90,35 @@ function GetMessage($subject, $message, $type)
 
 function UserLogin()
 {
-	global $pdo;
-	if(!empty($_POST['email']) AND !empty($_POST['password']))
-	{
-		$email = $_POST['email'];
-		$password = $_POST['password'];
+    global $pdo;
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-		$query = $pdo->prepare("SELECT * FROM users WHERE Email = :email OR Username = :email");
-		$query->execute(array(':email' => $email));
-		
-		if($query->rowCount() > 0)
-		{
-			while($row = $query->fetch(PDO::FETCH_ASSOC))
-			{
-                $password = hash('sha256', $password.$row['Salt']);
-                $password = strtoupper($password);
+        $query = $pdo->prepare("SELECT * FROM accounts WHERE email = :email OR username = :email");
+        $query->execute(array(':email' => $email));
 
-				if($password == $row['Key'])
-				{
-					$_SESSION['UID'] = $row['ID'];
-					$_SESSION['USER'] = $row;
-					echo '<script>window.location=\'?page=dashboard\'</script>';
-				}
-				else
-				{
-					GetMessage("Oops!", "Looks like your login credentials are incorrect. Please try again!", 1);
-				}
-			}
-		}
-		else
-		{
-			GetMessage("Oops!", "Your account does not exist in our database. Please try again later!", 1);
-		}
-	}
-	else
-	{
-		GetMessage("Oh snap!", "Make sure you fill out all the fields below. Please try again!", 1);
-	}
+        if ($query->rowCount() > 0) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                // Verify password using bcrypt
+                if (password_verify($password, $row['password'])) {
+                    $_SESSION['UID'] = $row['id'];
+                    $_SESSION['USER'] = $row;
+                    echo '<script>window.location=\'?page=dashboard\'</script>';
+                    return; // Exit function after successful login
+                } else {
+                    GetMessage("Oops!", "Looks like your login credentials are incorrect. Please try again!", 1);
+                    return; // Exit function if password doesn't match
+                }
+            }
+        } else {
+            GetMessage("Oops!", "Your account does not exist in our database. Please try again later!", 1);
+            return; // Exit function if account doesn't exist
+        }
+    } else {
+        GetMessage("Oh snap!", "Make sure you fill out all the fields below. Please try again!", 1);
+        return; // Exit function if fields are empty
+    }
 }
 
 ?>
