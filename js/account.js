@@ -7,7 +7,7 @@ function loginUser()
 	$.ajax(
 	{
 		type:"post",
-		url: "index.php?page=ajax&function=userlogin",
+		url: "ajax.php?function=userlogin",
 		data: dataString,
 		success: function(html)
 		{

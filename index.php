@@ -1,12 +1,17 @@
 <?php 
-    session_start(); ob_start();
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
+    require __DIR__ . '/autoload.php';
 
-    require("./inc/config.php");
-    //require(dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . "GTAPinas-Site" . DIRECTORY_SEPARATOR . "inc/config.php");
-    require(DIR_BASE . "inc/db.php");
-    require(DIR_BASE . "inc/functions.php");
+    $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
+    $pdo = $dbClass->getConnection();
+    $obj = new ucpProject($pdo);
+    require_once __DIR__ . "/header.php";
+
+    if($obj->isLoggedIn() == true) {
+        header("Location: " . SITE_URL . "/user/dashboard.php");
+        die;
+    }
+
+    /*require(dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . "GTAPinas-Site" . DIRECTORY_SEPARATOR . "inc/config.php");
 
     if(!isset($_GET['page'])) 
     {
@@ -20,5 +25,42 @@
     }
     else {
         include DIR_VIEWS . "$page.php";
-    }
+    }*/
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="./"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    <title><?php echo SITE_NAME; ?> - Home Page</title>
+
+    <link rel="shortcut icon" href="./favicon.ico"/>
+</head>
+
+<body>
+    <div class="container-fluid vh-100">
+
+        <div class="row d-flex justify-content-center align-items-center h-50">
+                    
+            <div class="col-lg-5 col-xs-12">
+            <center><h1 style="font-size: 80px; color: white;">
+                    <?php echo SITE_NAME; ?>
+                </h1></center>
+                <center><h5 style="font-size: 24px; color: white;">Begin your journey with us</h5></center>
+
+                <center><br><a href="https://gtapinas.xyz/discord" class="btn border text-white" style="width: 100%;">Join Now!</a></center>
+
+
+            </div>
+            
+        </div>
+
+    </div>
+</body>
+
+<?php require DIR_INC . 'footer.php'; ?>
+
+</html>
