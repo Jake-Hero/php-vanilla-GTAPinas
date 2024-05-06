@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <div class="container-fluid vh-100">
+    <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
@@ -83,8 +83,6 @@
         <!-- Container Ends here -->
         </div>
     </div>
-
-    <?php require DIR_INC . 'footer.php'; ?>
 
     <?php require DIR_INC . 'footer.php'; ?>
 </body>
