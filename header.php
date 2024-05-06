@@ -1,5 +1,5 @@
 <!-- Website Icon -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo SITE_URL; ?>/favicon-32x32.png">
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top shadow-5-strong">
     <div class="container">
@@ -28,9 +28,9 @@
                 </li>
                 <?php endif; ?>
 
-                <li class="nav-tem">
+                <!-- li class="nav-tem">
                     <a class="nav-link" href="./?page=donate">Donate</a>
-                </li>
+                </li -->
 
                 <li class="nav-tem">
                     <a class="nav-link" href="https://gtapinas.xyz/discord">Discord</a>
@@ -43,11 +43,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">       
                 
-            <li class="nav-item dropdown">
+                <!-- User's Name -->
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo $_SESSION['USER']['username']; ?>
                     </a>        
+
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<?php echo SITE_URL; ?>/user/dashboard.php">My Characters</a>
                         <a class="dropdown-item" href="<?php echo SITE_URL; ?>/logout.php">Logout</a>
                     </div>
                 </li>  

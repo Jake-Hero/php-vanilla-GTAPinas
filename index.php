@@ -6,10 +6,10 @@
     $obj = new ucpProject($pdo);
     require_once __DIR__ . "/header.php";
 
-    if($obj->isLoggedIn() == true) {
+    /*if($obj->isLoggedIn() == true) {
         header("Location: " . SITE_URL . "/user/dashboard.php");
         die;
-    }
+    }*/
 
     /*require(dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . "GTAPinas-Site" . DIRECTORY_SEPARATOR . "inc/config.php");
 
@@ -41,26 +41,28 @@
 </head>
 
 <body>
-    <div class="container-fluid vh-100">
+    <main role="main" class="flex-grow-1 overflow-autos">
+        <div class="container-fluid">
 
-        <div class="row d-flex justify-content-center align-items-center h-50">
-                    
-            <div class="col-lg-5 col-xs-12">
-            <center><h1 style="font-size: 80px; color: white;">
-                    <?php echo SITE_NAME; ?>
-                </h1></center>
-                <center><h5 style="font-size: 24px; color: white;">Begin your journey with us</h5></center>
+            <div class="row d-flex justify-content-center align-items-center h-50">
+                        
+                <div class="col-lg-5 col-xs-12">
+                <center><h1 style="font-size: 80px; color: white;">
+                        <?php echo SITE_NAME; ?>
+                    </h1></center>
+                    <center><h5 style="font-size: 24px; color: white;">Begin your journey with us</h5></center>
 
-                <center><br><a href="https://gtapinas.xyz/discord" class="btn border text-white" style="width: 100%;">Join Now!</a></center>
+                    <center><br><a href="https://gtapinas.xyz/discord" class="btn border text-white" style="width: 100%;">Join Now!</a></center>
 
 
+                </div>
+                
             </div>
-            
+
         </div>
+    </main>
 
-    </div>
+    <?php require DIR_INC . 'footer.php'; ?>
 </body>
-
-<?php require DIR_INC . 'footer.php'; ?>
 
 </html>

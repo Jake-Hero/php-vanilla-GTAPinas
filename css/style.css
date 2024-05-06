@@ -11,10 +11,16 @@ body {
     overflow: auto;
     position: relative;
     width: 100%;
-    min-height: 100%;
     background-image: url('../assets/pictures/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     display: block;
     background-attachment: fixed;
+}
+
+footer {
+    position: absolute;
+    width: 100%; 
+    bottom: 0;
+    font-size: 12px;
 }

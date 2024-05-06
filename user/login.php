@@ -23,43 +23,45 @@
 </head>
 
 <body>
-    <div class="container-fluid vh-100">
+    <main role="main" class="flex-grow-1 overflow-autos">
+        <div class="container-fluid">
+            <div class="row py-5">
+                <div class="col-lg-3 col-md-3 col-xs-12 float-none mx-auto">
+                    <div class="shadow-lg p-3 mb-5 bg-light rounded">
+                        <div class="card-header mb-5">
+                            <h5 class="text-center">
+                                <i class="fa fa-user"></i> Account Login
+                            </h5>
+                        </div>
 
-        <div class="row py-5">
-            <div class="col-lg-3 col-md-3 col-xs-12 float-none mx-auto">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="text-center">
-                            <i class="fa fa-user"></i> Account Login
-                        </h5>
-                    </div>
+                        <div class="card-body">
+                            <form method="POST">
+                                <div id="ajax"></div>
 
-                    <div class="card-body">
-                        <form method="POST">
-                            <div id="ajax"></div>
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input class="form-control" type="text" placeholder="Email Address" name="email" id="emailForm" />
+                                </div>
 
-                            <div class="form-group">
-                                <label class="form-label">Username</label>
-                                <input class="form-control" type="text" placeholder="Email Address" name="email" id="emailForm" />
-                            </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <input class="form-control" type="password" placeholder="Password" name="password" id="passForm" />
+                                </div>
 
-                            <div class="form-group">
-                                <label class="form-label">Password</label>
-                                <input class="form-control" type="password" placeholder="Password" name="password" id="passForm" />
-                            </div>
-
-                            <div class="py-3 mt-3">
-                                <button type="submit" class="btn btn-info w-100 text-white" onclick="return loginUser()">
-                                    Login
-                                </button>
-                            </div>
-                        </form>
+                                <div class="py-3 mt-3">
+                                    <button type="submit" class="btn btn-info w-100 text-white" onclick="return loginUser()">
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </main>
 
-    </div>
+    <?php require DIR_INC . 'footer.php'; ?>
 
 	<script type="text/javascript">
         /*$(document).ready(function()
@@ -72,7 +74,5 @@
 
     <script src="<?php echo SITE_URL; ?>/js/account.js" type="text/javascript"></script>
 </body>
-
-<?php require DIR_INC . 'footer.php'; ?>
 
 </html>

@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div class="container-fluid vh-100">
+    <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
@@ -62,7 +62,7 @@
             </div>
         <!-- Container Ends here -->
         </div>
-    </div>
+    </main>
 
     <?php require DIR_INC . 'footer.php'; ?>
 </body>
