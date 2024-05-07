@@ -12,3 +12,10 @@ This is a User Control Panel website made for GTA Pinas (Renegade Roleplay), a g
 
 ### This is purely coded in PHP Vanilla for the back-end. While the front-end design is aided by the Bootstrap Framework and Standard CSS.
 ### The website's database is ran on MySQL (XAMPP) / PhpMyAdmin.
+
+---
+
+# Screenshots
+
+![Homepage](assets/pictures/screenshots/homepage.png)
+![My Characters](assets/pictures/screenshots/mycharacters.png)
