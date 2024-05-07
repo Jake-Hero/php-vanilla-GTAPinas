@@ -35,7 +35,7 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
-            <div class="row d-flex justify-content-between">
+            <div class="row">
                 <!-- Back to My Characters -->
                 <div class="col">
                     <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
@@ -73,7 +73,7 @@
                                     <b>ID:</b> <?php echo $user['id']; ?><br/>
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
-                                    <b>Time Played:</b> <?php echo $user['hours']; ?><br/>
+                                    <b>Time Played:</b> <?php echo $user['hours']; ?> hour/s<br/>
                                 </div>
                             </div>
 
