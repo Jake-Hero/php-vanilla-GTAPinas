@@ -27,6 +27,15 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
+            <div class="d-flex justify-content-end mb-5">
+                <div class="row">
+                    <!-- Settings -->
+                    <div class="col">
+                        <a href="#" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
                 <div class="card-body">
