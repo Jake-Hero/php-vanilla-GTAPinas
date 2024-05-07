@@ -36,8 +36,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     <title><?php echo SITE_NAME; ?> - Home Page</title>
-
-    <link rel="shortcut icon" href="./favicon.ico"/>
 </head>
 
 <body>

@@ -1,10 +1,10 @@
 <!-- Website Icon -->
 <link rel="icon" type="image/png" sizes="32x32" href="<?php echo SITE_URL; ?>/favicon-32x32.png">
 
-<nav class="navbar navbar-expand-lg navbar-dark static-top shadow-5-strong">
+<nav class="navbar navbar-expand-lg navbar-dark static-top shadow-5-strong mt-5 mb-5">
     <div class="container">
         <a class="navbar-brand" href="<?php echo SITE_URL; ?>/index.php">
-            <img src="<?php echo SITE_URL; ?>/assets/pictures/gtapinas_logo.png" alt="GTAPINASLOGO" height="150">
+            <img src="<?php echo SITE_URL; ?>/assets/pictures/gtapinas_logo.png" alt="GTAPINASLOGO" height="50">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,10 @@
         <?php endif; ?>
                 <li class="nav-tem">
                     <a class="nav-link" href="<?php echo SITE_URL; ?>/index.php">Home</a>
+                </li>
+
+                <li class="nav-tem">
+                    <a class="nav-link" href="<?php echo SITE_URL; ?>/about.php">About</a>
                 </li>
 
                 <?php if($obj->isLoggedIn() == false): ?>

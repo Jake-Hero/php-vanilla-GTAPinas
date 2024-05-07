@@ -17,8 +17,8 @@
     // if $user is null or
     // if no IDs were specified = redirect to dashboard.
     if($user == null || !isset($cid)) {
-        header("Location:" . SITE_URL . "/user/dashboard.php");
-        die;
+        //header("Location:" . SITE_URL . "/user/dashboard.php");
+        $obj->throw404();
     }   
 ?>
 
@@ -29,15 +29,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     <title><?php echo SITE_NAME . ' - ' . $user['charname'] ?></title>
-
-    <link rel="shortcut icon" href="./favicon.ico"/>
 </head>
 
 <body>
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
-            <div class="shadow-lg p-3 mb-5 bg-light rounded">
+            <div class="row d-flex justify-content-between">
+                <!-- Back to My Characters -->
+                <div class="col">
+                    <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
+                </div>
+
+                <div class="col d-flex justify-content-end">
+                    <div class="row">
+                        <!-- Settings -->
+                        <div class="col">
+                            <a href="#" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shadow-lg p-3 mb-5 mt-5 bg-light rounded">
             <!-- Emulate Card -->
                 <h1 class="text-center mb-4 mt-3"><?php echo $user['charname']; ?></h1>
             <!-- Emulate Card Ends here -->
@@ -54,7 +68,7 @@
                         </div>
 
                         <div class="col">
-                            <div class="row">
+                            <div class="row py-4">
                                 <div class="col">
                                     <b>ID:</b> <?php echo $user['id']; ?><br/>
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
