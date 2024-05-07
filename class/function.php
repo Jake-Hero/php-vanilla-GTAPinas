@@ -152,6 +152,12 @@ class ucpProject {
         }
         return $skin_file;
     }
+
+    function throw404() {
+        header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+        include __DIR__ . "/../404.php";
+        return die();
+    }
 }
 
 ?>
