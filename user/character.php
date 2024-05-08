@@ -33,9 +33,9 @@
 
 <body>
     <main role="main" class="flex-grow-1 overflow-auto">
-        <div class="container">
+        <div class="container h-100">
         <!-- Container -->
-            <div class="row">
+            <div class="row mb-5">
                 <!-- Back to My Characters -->
                 <div class="col">
                     <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
@@ -51,7 +51,13 @@
                 </div>
             </div>
 
-            <div class="shadow-lg p-3 mb-5 mt-5 bg-light rounded">
+            <?php if($user['admin'] > 0): ?>
+                <div class='alert alert-success'>
+                    <strong>This character has administrator privileges in-game.</strong> 
+                </div>
+            <?php endif; ?>
+
+            <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
                 <h1 class="text-center mb-4 mt-3"><?php echo $user['charname']; ?></h1>
             <!-- Emulate Card Ends here -->
@@ -59,10 +65,11 @@
 
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
-                <div class="container">
+                <div class="container mb-3">
                 <!-- Initiate container -->
                     <div class="row d-flex justify-content-center">
                     <!-- Initialize row -->
+
                         <div class="col text-center">
                             <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                         </div>
@@ -74,6 +81,7 @@
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
                                     <b>Time Played:</b> <?php echo $user['hours']; ?> hour/s<br/>
+                                    <b>Last Played:</b> <?php echo date('M d, Y H:i:s', $user['last_login']); ?><br/>
                                 </div>
                             </div>
 
@@ -82,7 +90,7 @@
                             <div class="row">
                                 <div class="col">
                                     <b>Creation:</b> <?php echo date('M d, Y H:i:s', $user['creation']); ?><br/>
-                                    <b>Date of Birth:</b> <?php echo $user['birthday']; ?><br/>
+                                    <b>Date of Birth:</b> <?php echo $user['birthday'] . ' (<b>' . $obj->calculateCharacterAge($user['birthday']) . ' years old</b>)'; ?><br/>
                                     <b>Bank:</b> $<?php echo number_format($user['bank']); ?><br/>
                                     <b>Pocket Money:</b> $<?php echo number_format($user['cash']); ?><br/>
                                 </div>
@@ -96,7 +104,7 @@
             </div>
         <!-- Container Ends here -->
         </div>
-    </div>
+    </main>
 
     <?php require DIR_INC . 'footer.php'; ?>
 </body>

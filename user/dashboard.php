@@ -12,6 +12,10 @@
     }
 
     $users = $obj->getCharacters($_SESSION["UID"]);
+    $verified = ($obj->fetchData('accounts', 'verified', 'id', $_SESSION['UID'])) ? ("Verified") : ("Not Verified");
+    $vip = $obj->fetchData('accounts', 'donator', 'id', $_SESSION['UID']);
+    $viptime = $obj->fetchData('accounts', 'donatortime', 'id', $_SESSION['UID']);
+    $vip_expiration = ($vip > 0) ? ('('.date('m/d/Y H:i:s', $viptime).')') : ('');
 ?>
 
 <!DOCTYPE html>
@@ -38,32 +42,61 @@
 
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
-                <div class="card-body">
-                <!-- Card Body -->
-                    <h1 class="text-center mb-4 mt-3">My Characters</h1>
+                <h1 class="text-center mb-4 mt-3">My Characters</h1>
 
-                    <div class="row d-flex justify-content-center">
-                    <!-- List all characters -->
-                        <?php foreach ($users as $user): ?>
-                        <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
-                            <div class="shadow-lg p-3 mb-5 bg-body rounded">
-                            <!-- Cast shadows -->
-                                <!-- Make it clickable to user/character.php?id=['id'] -->
-                                <a href="<?php echo SITE_URL; ?>/user/character.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body bg-white">
-                                        <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
-                                        <h4><?php echo $user['charname']; ?></h4>
-                                        <p>Last Seen: <?php echo date('m/d/Y H:i:s', $user['last_login']); ?></p>
-                                    </div>
-                                </a>
-                                <!-- End of Clickable -->
-                            </div>
-                            <!-- Cast shadows ends here -->
+                <div class="row d-flex justify-content-center">
+                <!-- List all characters -->
+                    <?php foreach ($users as $user): ?>
+                    <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
+                        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                        <!-- Cast shadows -->
+                            <!-- Make it clickable to user/character.php?id=['id'] -->
+                            <a href="<?php echo SITE_URL; ?>/user/character.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                <div class="card-body bg-white">
+                                    <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
+                                    <h4><?php echo $user['charname']; ?></h4>
+                                    <p>
+                                        <b>Last Played:</b> <?php echo date('m/d/Y H:i:s', $user['last_login']); ?>
+                                        <b>Hour/s Played:</b> <?php echo $user['hours']; ?>
+                                    </p>
+                                </div>
+                            </a>
+                            <!-- End of Clickable -->
                         </div>
-                        <?php endforeach; ?>
-                    <!-- List all characters Ends here-->
+                        <!-- Cast shadows ends here -->
                     </div>
-                <!-- Card Body ends here -->
+                    <?php endforeach; ?>
+                <!-- List all characters Ends here-->
+                </div>
+            <!-- Emulate Card Ends here -->
+            </div>
+
+            <div class="shadow-lg p-3 mb-5 bg-light rounded">
+            <!-- Emulate Card -->
+                <h1 class="text-center mb-4 mt-3">Account Information</h1>
+
+                <div class="container">
+                    <table class="table text-center">
+                        <tr>
+                            <td><b>Master Account Name</b></td>
+                            <td><?php echo $obj->fetchData('accounts', 'username', 'id', $_SESSION['UID']); ?></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Registration Date</b></td>
+                            <td><?php echo date('F d, Y H:i:s', $obj->fetchData('accounts', 'registerdate', 'id', $_SESSION['UID'])); ?></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td><?php echo $obj->fetchData('accounts', 'email', 'id', $_SESSION['UID']) . ' (' . $verified . ')'; ?></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Donator Status</b></td>
+                            <td><?php echo $obj->getDonatorRank($vip) . ' ' . $vip_expiration; ?></td>
+                        </tr>
+                    </table>
                 </div>
             <!-- Emulate Card Ends here -->
             </div>

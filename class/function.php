@@ -113,7 +113,7 @@ class ucpProject {
     }
 
     // fetch a character's data.
-    public function getCharacterData($id) {
+    function getCharacterData($id) {
         $result = $this->pdo->prepare("SELECT * FROM characters WHERE id = :id LIMIT 1;");
         $result->execute(array(':id' => $id));
         
@@ -122,6 +122,23 @@ class ucpProject {
         } else {
             return null; // No data found
         }
+    }
+
+    // checks the characyer's proper age. (converted from PAWN language (server's game script) to PHP)
+    function calculateCharacterAge($timestamp) {
+        //$timestamp = date('Y-m-d', strtotime($timestamp));
+
+        $m = date('m');
+        $d = date('d');
+        $y = date('Y');
+
+        $month = date('m', strtotime($timestamp));
+        $day = date('d', strtotime($timestamp));
+        $year = date('Y', strtotime($timestamp));
+        $age = null;
+
+        $age = ($month >= $m && $day >= $d) ? ($y - $year) : ($y - $year - 1);
+        return $age;	
     }
 
     // fetch all the characters assigned to that account ID.
@@ -141,6 +158,20 @@ class ucpProject {
         return $characters;
     }
 
+    // fetch data to specified table & select column based on the given column and value.
+    function fetchData($table, $select_column, $column, $value) {
+        $result = $this->pdo->prepare("SELECT $select_column FROM $table WHERE $column = :value");
+        $result->execute(array(':value' => $value));
+        
+        $name = null;
+
+        if ($result->rowCount() > 0) {
+            $name = $result->fetchColumn();
+        }
+
+        return $name;
+    }
+
     // fetch skin image based on the given skinID.
     function getSkin($skin) {
         // question mark by default.
@@ -153,6 +184,20 @@ class ucpProject {
         return $skin_file;
     }
 
+    // fetch account's donator rank
+    function getDonatorRank($rank) {
+        $rank_name = "Not Subscribed";
+
+        switch($rank) {
+            case 1: $rank_name = "Silver Donator"; break;
+            case 2: $rank_name = "Gold Donator"; break;
+            case 3: $rank_name = "Platinum Donator"; break;
+        }
+
+        return $rank_name;
+    }
+
+    // Throw 404 error
     function throw404() {
         header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
         include __DIR__ . "/../404.php";
