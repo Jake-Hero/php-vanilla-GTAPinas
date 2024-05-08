@@ -18,8 +18,15 @@ body {
     background-attachment: fixed;
 }
 
+main {
+    flex: 1 0 auto; /* 2 */
+    margin: 10px;
+    min-height: 100%;
+}
+
 footer {
-    position: absolute;
+    margin-top: 50px;
+    flex-shrink: 0; 
     width: 100%; 
     bottom: 0;
     font-size: 12px;

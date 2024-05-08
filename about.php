@@ -20,6 +20,10 @@
     p {
         white-space: pre-wrap;
     }
+
+    b {
+        color: green;
+    }
     </style>
 </head>
 
@@ -27,7 +31,7 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
 
-            <div class="row d-flex justify-content-center align-items-center mb-5">
+            <div class="row d-flex justify-content-center align-items-center">
                         
                 <div class="shadow-lg p-3 mb-5 bg-light rounded">
                     <div class="container">
@@ -38,7 +42,7 @@
 <img src="<?php echo SITE_URL; ?>/assets/pictures/screenshots/miners.jpg" alt="playermining" class="img-fluid mb-5" />
 </center>
 
-A roleplay server established in 2020, founded by Cipher (Justine Ramos), Dizeuce and aezakmi.
+A roleplay server established in 2020, founded by <b>Justine Ramos (Cipher)</b>, <b>Dizeuce</b> and <b>aezakmi</b>.
 
 Set in the map of San Andreas (Los Santos, San Fierro, Las Venturas), GTA Pinas Roleplay is a game server for San Andreas Multiplayer (SA-MP), a third-party modification 
 for Grand Theft Auto: San Andreas, offering a fun roleplaying experience for everyone.

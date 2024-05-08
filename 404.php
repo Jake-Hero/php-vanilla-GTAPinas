@@ -17,6 +17,10 @@
     #back_home {
         margin-top: 50px;
     }
+
+    i {
+        font-size: 200px;
+    }
 </style>
 
 <head>
@@ -31,6 +35,7 @@
                 <div class="float-none mx-auto">
                     <div class="shadow-lg p-3 mb-5 bg-light rounded">
                         <div class="content">
+                            <i class="far fa-meh"></i>
                             <h1>404</h1>
                             <h2>PAGE NOT FOUND</h2>
 
