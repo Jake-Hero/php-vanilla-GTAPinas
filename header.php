@@ -55,6 +55,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="<?php echo SITE_URL; ?>/user/dashboard.php">My Characters</a>
+                        <a class="dropdown-item" href="<?php echo SITE_URL; ?>/user/settings.php">Settings</a>
                         <a class="dropdown-item" href="<?php echo SITE_URL; ?>/logout.php">Logout</a>
                     </div>
                 </li>  

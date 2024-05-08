@@ -36,7 +36,7 @@
                 <div class="row">
                     <!-- Settings -->
                     <div class="col">
-                        <a href="#" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="<?php echo SITE_URL; ?>/user/settings.php" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                                     <h4><?php echo $user['charname']; ?></h4>
                                     <p>
                                         <b>Last Played:</b> <?php echo date('m/d/Y H:i:s', $user['last_login']); ?>
-                                        <b>Hour/s Played:</b> <?php echo $user['hours']; ?>
+                                        <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?>
                                     </p>
                                 </div>
                             </a>
@@ -86,6 +86,11 @@
                         <tr>
                             <td><b>Registration Date</b></td>
                             <td><?php echo date('F d, Y H:i:s', $obj->fetchData('accounts', 'registerdate', 'id', $_SESSION['UID'])); ?></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Total Hour/s Played</b></td>
+                            <td><?php echo number_format($obj->calculateTotalHours($_SESSION['UID'])); ?></td>
                         </tr>
 
                         <tr>
