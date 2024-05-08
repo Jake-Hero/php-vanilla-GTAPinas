@@ -12,6 +12,7 @@
     }
 
     $users = $obj->getCharacters($_SESSION["UID"]);
+    $email = (!empty($obj->fetchData('accounts', 'email', 'id', $_SESSION['UID']))) ? $obj->fetchData('accounts', 'email', 'id', $_SESSION['UID']) : ("Unset");
     $verified = ($obj->fetchData('accounts', 'verified', 'id', $_SESSION['UID'])) ? ("Verified") : ("Not Verified");
     $vip = $obj->fetchData('accounts', 'donator', 'id', $_SESSION['UID']);
     $viptime = $obj->fetchData('accounts', 'donatortime', 'id', $_SESSION['UID']);
@@ -89,7 +90,7 @@
 
                         <tr>
                             <td><b>Email</b></td>
-                            <td><?php echo $obj->fetchData('accounts', 'email', 'id', $_SESSION['UID']) . ' (' . $verified . ')'; ?></td>
+                            <td><?php echo $email . ' (' . $verified . ')'; ?></td>
                         </tr>
 
                         <tr>
