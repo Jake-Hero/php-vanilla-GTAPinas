@@ -13,6 +13,7 @@ if(isset($_GET['function']))
 		switch($_GET['function'])
 		{
 			case 'userlogin': $obj->UserLogin(); break;
+			case 'settingsave': $obj->SettingSave(); break;
 		}
 	}
 	else

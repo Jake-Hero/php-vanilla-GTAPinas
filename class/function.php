@@ -42,12 +42,14 @@ class ucpProject {
             } break;
             case 3: // Success
             {
-                echo "
+                $_SESSION['success_message'] = "
                 <div class='alert alert-success' id='message'>
                     <strong>$subject</strong> 
                     <div>$message</div>
                 </div>
                 ";
+
+                echo $_SESSION['success_message'];
             } break;
             case 4: // Error (without fadeout)
             {
@@ -112,6 +114,34 @@ class ucpProject {
         }
     }
 
+    // Save user's settings
+    function SettingSave() 
+    {
+        $new_pass = $_POST['newpassword'];
+        $cur_pass = $_POST['password'];
+
+        if (!empty($cur_pass)) {
+            if(password_verify($cur_pass, $this->fetchData('accounts', 'password', 'id', $_SESSION['UID']))) {
+                if(!empty($new_pass)) {
+                    $new_pass = password_hash($new_pass, PASSWORD_BCRYPT, ['cost' => 12]);
+
+                    $this->saveData('accounts', 'password', $new_pass, 'id', $_SESSION['UID']);
+                }
+
+                $this->GetMessage("Save!", "Settings Saved.", 3);
+                
+                echo "<meta http-equiv='refresh' content='0'>";
+                return;
+            } else {
+                $this->GetMessage("Oops!", "Your current password is wrong!", 1);
+                return;
+            }
+        } else {
+            $this->GetMessage("Oops!", "Current password must be filled.", 1);
+            return;
+        }
+    }
+
     // fetch a character's data.
     function getCharacterData($id) {
         $result = $this->pdo->prepare("SELECT * FROM characters WHERE id = :id LIMIT 1;");
@@ -122,6 +152,23 @@ class ucpProject {
         } else {
             return null; // No data found
         }
+    }
+
+    // calculate all hours played from all the characters from the account.
+    function calculateTotalHours($uid) {
+        // limit the characters fetching to three only. (Design Compability & Game Script compability)
+        $result = $this->pdo->prepare("SELECT hours FROM characters WHERE uid = :uid LIMIT 3;");
+        $result->execute(array(':uid' => $_SESSION['UID']));
+
+        $hours = 0;
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetchColumn()) {
+                $hours = $hours + $row;
+            }
+        }
+
+        return $hours;
     }
 
     // checks the characyer's proper age. (converted from PAWN language (server's game script) to PHP)
@@ -163,13 +210,20 @@ class ucpProject {
         $result = $this->pdo->prepare("SELECT $select_column FROM $table WHERE $column = :value");
         $result->execute(array(':value' => $value));
         
-        $name = null;
+        $data = null;
 
         if ($result->rowCount() > 0) {
-            $name = $result->fetchColumn();
+            $data = $result->fetchColumn();
         }
 
-        return $name;
+        return $data;
+    }
+
+    // save data to specified table & select column based on the given column and value.
+    function saveData($table, $fieldname, $fieldvalue, $column, $colval) {
+        $result = $this->pdo->prepare("UPDATE $table SET $fieldname = :value WHERE $column = :colval");
+        $result->execute(array(':value' => $fieldvalue, ':colval' => $colval));
+        return;
     }
 
     // fetch skin image based on the given skinID.

@@ -33,7 +33,7 @@
 
 <body>
     <main role="main" class="flex-grow-1 overflow-auto">
-        <div class="container h-100">
+        <div class="container">
         <!-- Container -->
             <div class="row mb-5">
                 <!-- Back to My Characters -->
@@ -70,17 +70,19 @@
                     <div class="row d-flex justify-content-center">
                     <!-- Initialize row -->
 
+                        <!-- Character's Skin -->
                         <div class="col text-center">
                             <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                         </div>
 
+                        <!-- Character's Info -->
                         <div class="col">
                             <div class="row py-4">
                                 <div class="col">
                                     <b>ID:</b> <?php echo $user['id']; ?><br/>
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
-                                    <b>Time Played:</b> <?php echo $user['hours']; ?> hour/s<br/>
+                                    <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?> hour/s<br/>
                                     <b>Last Played:</b> <?php echo date('M d, Y H:i:s', $user['last_login']); ?><br/>
                                 </div>
                             </div>
@@ -98,10 +100,35 @@
                         </div>
                     <!-- row ends here -->
                     </div>
+
+                    <!-- Other Choices -->
+                    <div class="shadow-lg p-3 mt-5 mb-5 bg-light rounded">
+                        <div class="container mb-3">
+                        <!-- Initiate container -->
+                            <div class="row d-flex justify-content-center">
+                            <!-- Initialize row -->
+                            
+                                <!-- Houses -->
+                                <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
+                                    <a href="#" style="text-decoration: none; color: inherit;">
+                                        <div>
+                                            <i class="fas fa-home fa-10x" style="color: #33AA33"></i>
+                                            <h1>Houses</h1>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            <!-- row ends here -->
+                            </div>
+                        <!-- Container ends here -->
+                        </div>
+                    </div>
+
                 <!-- Container ends here -->
                 </div>
             <!-- Emulate Card Ends here -->
             </div>
+
         <!-- Container Ends here -->
         </div>
     </main>
