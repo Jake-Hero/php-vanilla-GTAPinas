@@ -7,7 +7,7 @@ function loginUser()
 	$.ajax(
 	{
 		type:"post",
-		url: "ajax.php?function=userlogin",
+		url: "ajax/ajax.php?function=userlogin",
 		data: dataString,
 		success: function(html)
 		{
@@ -29,14 +29,14 @@ function settingUser()
 	$.ajax(
 	{
 		type:"post",
-		url: "ajax.php?function=settingsave",
+		url: "ajax/ajax.php?function=settingsave",
 		data: dataString,
 		success: function(html)
 		{
 			$("#ajax").html(html);
 		},
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
+            //console.log(textStatus, errorThrown);
         }
 	});
 	return false;

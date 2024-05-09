@@ -24,16 +24,6 @@ define('DIR_ASSETS',    DIR_ROOT . 'assets' . DIRECTORY_SEPARATOR);
 // Path for Pictures (obsolete)
 define('DIR_PICTURES',  './assets/pictures/');
 
-
-// SQL Connections
-define('SQL_HOST',      'localhost');
-// SQL User Account
-define('SQL_USER',      'root');
-// SQL User Password
-define('SQL_PASS',      '');
-// SQL Database
-define('SQL_DB',        'renegade');
-
 ?>
 
 <!-- CSS -->

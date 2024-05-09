@@ -97,6 +97,7 @@ class ucpProject {
                     if (password_verify($password, $row['password'])) {
                         $_SESSION['UID'] = $row['id'];
                         $_SESSION['USER'] = $row;
+
                         echo '<script>window.location=\'user/dashboard.php\'</script>';
                         return; // Exit function after successful login
                     } else {
@@ -188,6 +189,223 @@ class ucpProject {
         return $age;	
     }
 
+    // fetch all the businesses owned by the character.
+    function fetchBusinesses($id) {
+        $result = $this->pdo->prepare("SELECT * FROM business WHERE owner = :id");
+        $result->execute(array(':id' => $id));
+
+        $businesses = array();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $businesses[] = $row;
+            }
+        }
+
+        return $businesses;
+    }
+
+    // fetch a business' data. (ajax)
+    function fetchBizData($bid)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM business WHERE id = :bid");
+        $query->execute(array(':bid' => $bid));
+
+        if ($query->rowCount() > 0) {
+            $biz = array();
+
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $biz[] = $row;
+            }
+            return $biz;
+        } else {
+            die;
+        }
+    }
+
+    // fetch a business' products prices. (ajax)
+    function fetchBizPrices($bid)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM business_prices WHERE bizid = :bid");
+        $query->execute(array(':bid' => $bid));
+
+        if ($query->rowCount() > 0) {
+            $prices = array();
+
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $prices[] = $row;
+            }
+            return $prices;
+        } else {
+            die;
+        }
+    }
+    
+    // fech business' prooucts & prices (ajax)
+    function fetchBizProducts($bid) {
+        $data = $this->fetchBizPrices($bid);
+        $type = $this->fetchData('business', 'type', 'id', $bid) - 1;
+        $products = [];
+    
+        if(!empty($data)) {
+            $products_name = array(
+                array( // Gas Station
+                    "Portable Radio",
+                    "Mobile Phone",
+                    "GPS", 
+                    "Rope", 
+                    "Lottery Ticket",
+                    "Mask", 
+                    "Simcard", 
+                    "Prepaid Credit", 
+                    "Fishing Rod", 
+                    "Dice", 
+                    "Baking Soda", 
+                    "Cigarette",
+                    "Lighter", 
+                    "Fuel Can"
+                ),
+                array( // Convenience Store
+                    "Portable Radio",
+                    "Mobile Phone",
+                    "GPS", 
+                    "Rope", 
+                    "Lottery Ticket",
+                    "Mask", 
+                    "Simcard", 
+                    "Prepaid Credit", 
+                    "Fishing Rod", 
+                    "Dice", 
+                    "Baking Soda", 
+                    "Cigarette",
+                    "Lighter", 
+                    "Fuel Can"
+                ),
+                null, // Vehicle Dealership
+                array( // Clothing Store
+                    "Clothe",
+                    "Accessories"
+                ),
+                array( // Gun Store
+                    "Baseball Bat", 
+                    "9mm", 
+                    "Shotgun", 
+                    "Light Armour"
+                ),
+                array( // Restaurant
+                    "Water Bottle", 
+                    "Soda", 
+                    "Slice of Pizza", 
+                    "Large Burger"
+                ),
+                null, // Car Autoshop
+                array( // Bar
+                    "Water Bottle", 
+                    "Soda", 
+                    "Slice of Pizza", 
+                    "Large Burger"
+                )
+            );
+
+            $product = $products_name[$type-1];
+
+            foreach($data as $row) {
+                $price = [];
+                for($i = 1; $i <= 20; $i++) {
+                    $prices = 'prices' . $i;
+                    $price[] = $row[$prices];
+                }
+
+                foreach($product as $pn) {
+                    $products[] = array('name' => $pn, 'price' => array_shift($price));
+                }
+            }
+        }
+    
+        return $products;
+    }
+
+    // fetch business's type
+    function getBizType($type) {
+        $type_name = "undefined";
+
+        switch($type) {
+            case 1: $type_name = "Gas Station"; break;
+            case 2: $type_name = "Convenience Store"; break;
+            case 3: $type_name = "Vehicle Dealer Ship"; break;
+            case 4: $type_name = "Clothing Store"; break;
+            case 5: $type_name = "Gun Store"; break;
+            case 6: $type_name = "Restaurant"; break;
+            case 7: $type_name = "Car Autoshop"; break;
+            case 8: $type_name = "Bar"; break;
+        }
+
+        return $type_name;
+    }
+
+    // fetch all the houses owned by the character.
+    function fetchHouses($id) {
+        $result = $this->pdo->prepare("SELECT * FROM properties WHERE owner = :id");
+        $result->execute(array(':id' => $id));
+
+        $houses = array();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $houses[] = $row;
+            }
+        }
+
+        return $houses;
+    }
+
+    // fetch a house's data. (ajax)
+    function fetchHouseData($hid)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM properties WHERE id = :hid");
+        $query->execute(array(':hid' => $hid));
+
+        if ($query->rowCount() > 0) {
+            $houses = array();
+
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $houses[] = $row;
+            }
+            return $houses;
+        } else {
+            die;
+        }
+    }
+
+    // fech house's weapons (ajax)
+    function fetchHouseWeapons($hid) {
+        $data = $this->fetchHouseData($hid);
+        $weapons = array();
+    
+        if(!empty($data)) {
+            foreach($data as $row) {
+                for($i = 0; $i < 5; $i++) {
+                    $weapon_key = 'weapon_' . $i;
+                    $ammo_key = 'ammo_' . $i;
+                    
+                    if($row[$weapon_key] > 0) {
+                        $weapons[] = array('weapon' => $row[$weapon_key], 'ammo' => $row[$ammo_key]);
+                    }
+                }
+            }
+        }
+    
+        return $weapons;
+    }
+    
+    // count house furniture.
+    function countFurnitures($hid) {
+        $result = $this->pdo->prepare("SELECT * FROM furniture WHERE houseid = :id");
+        $result->execute(array(':id' => $hid));    
+        
+        return $result->rowCount();
+    }
+
     // fetch all the characters assigned to that account ID.
     function getCharacters($uid) {
         // limit the characters fetching to three only. (Design Compability & Game Script compability)
@@ -238,6 +456,65 @@ class ucpProject {
         return $skin_file;
     }
 
+    // fetch weapon's name based on the given ID.
+    function getWeaponName($weaponid) {
+        
+        $weapons = array(
+            'Fist',
+            'Brass Knuckles',
+            'Golf Club',
+            'Nightstick',
+            'Knife',
+            'Baseball Bat',
+            'Shovel',
+            'Pool Cue',
+            'Katana',
+            'Chainsaw',
+            'Purple Dildo',
+            'Dildo',
+            'Vibrator',
+            'Silver Vibrator',
+            'Flowers',
+            'Cane',
+            'Grenade',
+            'Tear Gas',
+            'Molotov Cocktail',
+            null, // 19
+            null, // 20
+            null, // 21
+            '9mm',
+            'Silenced 9mm',
+            'Desert Eagle',
+            'Shotgun',
+            'Sawnoff Shotgun',
+            'Combat Shotgun',
+            'Uzi',
+            'MP5',
+            'AK-47',
+            'M4',
+            'Tec-9',
+            'Country Rifle',
+            'Sniper Rifle',
+            'RPG',
+            'HS Rocket',
+            'Flamethrower',
+            'Minigun',
+            'Satchel Charge',
+            'Detonator',
+            'Spraycan',
+            'Fire Extinguisher',
+            'Camera',
+            'Night Vision Goggles',
+            'Thermal Goggles',
+            'Parachute'
+        );
+
+        $weapon_name = NULL;
+
+        $weapon_name = $weapons[$weaponid];
+        return $weapon_name;
+    }
+    
     // fetch account's donator rank
     function getDonatorRank($rank) {
         $rank_name = "Not Subscribed";

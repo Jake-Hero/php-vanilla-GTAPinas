@@ -15,7 +15,7 @@
     $user = $obj->getCharacterData($cid);
 
     // if $user is null or
-    // if no IDs were specified = redirect to dashboard.
+    // if no IDs were specified = throw 404 error.
     if($user == null || !isset($cid)) {
         //header("Location:" . SITE_URL . "/user/dashboard.php");
         $obj->throw404();
@@ -38,7 +38,7 @@
             <div class="row mb-5">
                 <!-- Back to My Characters -->
                 <div class="col">
-                    <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
+                    <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> My Characters</a>
                 </div>
 
                 <div class="col d-flex justify-content-end">
@@ -71,7 +71,7 @@
                     <!-- Initialize row -->
 
                         <!-- Character's Skin -->
-                        <div class="col text-center">
+                        <div class="col-lg-6 col-xl-6 col-md-6 col-xs-12 text-center">
                             <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                         </div>
 
@@ -79,7 +79,7 @@
                         <div class="col">
                             <div class="row py-4">
                                 <div class="col">
-                                    <b>ID:</b> <?php echo $user['id']; ?><br/>
+                                    <b>ID:</b> <?php echo number_format($user['id']); ?><br/>
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
                                     <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?> hour/s<br/>
@@ -110,10 +110,20 @@
                             
                                 <!-- Houses -->
                                 <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
-                                    <a href="#" style="text-decoration: none; color: inherit;">
+                                    <a href="<?php echo SITE_URL; ?>/user/house.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
                                         <div>
                                             <i class="fas fa-home fa-10x" style="color: #33AA33"></i>
                                             <h1>Houses</h1>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- Businesses -->
+                                <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
+                                    <a href="<?php echo SITE_URL; ?>/user/business.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                        <div>
+                                            <i class="fas fa-building fa-10x"></i>
+                                            <h1>Businesses</h1>
                                         </div>
                                     </a>
                                 </div>

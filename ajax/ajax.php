@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/autoload.php';
+require __DIR__ . '/../autoload.php';
 
 $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
 $pdo = $dbClass->getConnection();
@@ -14,6 +14,7 @@ if(isset($_GET['function']))
 		{
 			case 'userlogin': $obj->UserLogin(); break;
 			case 'settingsave': $obj->SettingSave(); break;
+			case 'retrievehouse': $obj->fetchHouseData(); break;
 		}
 	}
 	else
