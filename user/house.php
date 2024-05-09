@@ -65,7 +65,6 @@
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
                 <h1 class="text-center mb-4 mt-3">
-                    <span class="fas fa-home" style="color: #33AA33; font-size: 50px;"></span>
                     <?php echo $owner; ?>'s Houses
                 </h1>
             <!-- Emulate Card Ends here -->
@@ -81,11 +80,11 @@
                             <table class="table table-hover text-center">
                                 <thead>
                                     <td></td>
-                                    <td>ID</td>
-                                    <td>Level</td>
-                                    <td>Price</td>
-                                    <td>Status</td>
-                                    <td>Furnitures</td>
+                                    <td><b>ID</b></td>
+                                    <td><b>Level</b></td>
+                                    <td><b>Price</b></td>
+                                    <td><b>Status</b></td>
+                                    <td><b>Furnitures</b></td>
                                     <td></td>
                                 </thead>
 

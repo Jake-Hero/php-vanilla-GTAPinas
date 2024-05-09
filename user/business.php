@@ -80,14 +80,15 @@
                             <table class="table table-hover text-center">
                                 <thead>
                                     <td></td>
-                                    <td>ID</td>
-                                    <td>Level</td>
-                                    <td>Price</td>
-                                    <td>Status</td>
-                                    <td>Type</td>
+                                    <td><b>ID</b></td>
+                                    <td><b>Level</b></td>
+                                    <td><b>Price</b></td>
+                                    <td><b>Status</b></td>
+                                    <td><b>Type</b></td>
                                     <td></td>
                                 </thead>
 
+                                <tbody>
                                 <?php foreach($business as $biz): ?>
                                     <?php $locked = ($biz['locked']) ? ("Locked") : ("Unlocked"); ?>
 
@@ -101,6 +102,7 @@
                                         <td><a id="inventory" href="#" data-bs-toggle="modal" data-id="<?php echo $biz['id']; ?>" data-bs-target="#inventoryModal">Inventory</a></td>
                                     </tr>
                                 <?php endforeach; ?>
+                                </tbody>
                             </table>
                         </div>  
                     <?php else: ?>

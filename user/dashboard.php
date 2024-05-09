@@ -54,7 +54,7 @@
                             <!-- Make it clickable to user/character.php?id=['id'] -->
                             <a href="<?php echo SITE_URL; ?>/user/character.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
                                 <div class="card-body bg-white">
-                                    <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
+                                    <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                                     <h4><?php echo $user['charname']; ?></h4>
                                     <p>
                                         <b>Last Played:</b> <?php echo date('m/d/Y H:i:s', $user['last_login']); ?>

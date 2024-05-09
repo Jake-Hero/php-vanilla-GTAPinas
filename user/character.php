@@ -72,7 +72,7 @@
 
                         <!-- Character's Skin -->
                         <div class="col-lg-6 col-xl-6 col-md-6 col-xs-12 text-center">
-                            <img src="<?php echo $obj->getSkin($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
+                            <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                         </div>
 
                         <!-- Character's Info -->
@@ -124,6 +124,16 @@
                                         <div>
                                             <i class="fas fa-building fa-10x"></i>
                                             <h1>Businesses</h1>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- Vehicles -->
+                                <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
+                                    <a href="<?php echo SITE_URL; ?>/user/vehicle.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                        <div>
+                                            <i class="fas fa-car fa-10x" style="color: #FF0000"></i>
+                                            <h1>Vehicles</h1>
                                         </div>
                                     </a>
                                 </div>
