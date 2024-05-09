@@ -83,7 +83,7 @@
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
                                     <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?> hour/s<br/>
-                                    <b>Last Played:</b> <?php echo date('M d, Y H:i:s', $user['last_login']); ?><br/>
+                                    <b>Last Played:</b> <?php echo date('M d, Y H:i:s', $user['last_login']); ?>
                                 </div>
                             </div>
 
@@ -95,6 +95,56 @@
                                     <b>Date of Birth:</b> <?php echo $user['birthday'] . ' (<b>' . $obj->calculateCharacterAge($user['birthday']) . ' years old</b>)'; ?><br/>
                                     <b>Bank:</b> $<?php echo number_format($user['bank']); ?><br/>
                                     <b>Pocket Money:</b> $<?php echo number_format($user['cash']); ?><br/>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col">
+                                    <?php 
+                                    $number = $obj->fetchData('character_phone', 'phone_number', 'id', $user['id']);
+                                    $number = (isset($number)) ? $number : ("No Phone");
+
+                                    $battery = $obj->fetchData('character_phone', 'phone_battery', 'id', $user['id']);
+                                    $battery = (isset($battery)) ? $battery : ("0%");
+
+                                    $load_credits = $obj->fetchData('character_phone', 'phone_load', 'id', $user['id']);
+                                    $load_credits = (isset($load_credits)) ? $load_credits : ("0");
+                                    ?>
+                                    <b>Phone:</b> <?php echo $number; ?><br/>
+                                    <b>Battery:</b> <?php echo $battery; ?><br/>
+                                    <b>Load Credit/s:</b> <?php echo $load_credits; ?><br/>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col">
+                                    <?php 
+                                    $faction = $obj->getCharacterFaction($user['id']);
+                                    $gang = $obj->getCharacterGang($user['id']);
+
+                                    $rank = $obj->fetchData('characters', 'rank', 'id', $user['id']);
+                                    ?>
+
+                                    <?php if(isset($faction)): ?>
+
+                                        <b>Faction:</b> <?php echo $faction; ?><br/>
+                                        <b>Rank:</b> <?php echo $obj->getFactionRank($faction, $rank); ?> (<?php echo $rank; ?>)<br/>
+                                        
+                                    <?php elseif(isset($gang)): ?>
+
+                                        <b>Gang:</b> <?php echo $gang; ?><br/>
+                                        <b>Rank:</b> <?php echo $obj->getGangRank($gang, $rank); ?> (<?php echo $rank; ?>)<br/>
+                                        
+                                    <?php else: ?>
+
+                                        <b>Faction:</b> None<br />
+                                        <b>Rank:</b> None (0)<br />
+
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

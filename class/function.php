@@ -551,7 +551,69 @@ class ucpProject {
         }
         return $weapons;
     }
+    
+    // fetch faction name based on the given factionID.
+    function getCharacterFaction($uid) {
+        $name = null;
 
+        if(isset($uid)) {
+            $result = $this->fetchData('characters', 'faction', 'id', $uid);
+
+            if(isset($result) && $result >= 0) {
+                $name = $this->fetchData('factions', 'name', 'factionid', $result);
+            }
+        }
+        return $name;
+    }
+
+    // fetch faction rank based on the given rankID.
+    function getFactionRank($faction, $rank) {
+        $name = "Undefined";
+
+        if(isset($faction) && isset($rank)) {
+            $id = $this->fetchData('factions', 'id', 'name', $faction);
+
+            $query = $this->pdo->prepare("SELECT name FROM factionranks WHERE factionid = :faction AND rank = :rank");
+            $query->execute(array(':faction' => $id, ':rank' => $rank));
+
+            if ($query->rowCount() > 0) {
+                $name = $query->fetchColumn();
+            }
+        }
+        return $name;
+    }
+
+    // fetch gang rank based on the given rankID.
+    function getGangRank($gang, $rank) {
+        $name = "Undefined";
+
+        if(isset($gang) && isset($rank)) {
+            $id = $this->fetchData('gangs', 'id', 'name', $faction);
+            
+            $query = $this->pdo->prepare("SELECT name FROM gangranks WHERE gangid = :gang AND rank = :rank");
+            $query->execute(array(':gang' => $id, ':rank' => $rank));
+
+            if ($query->rowCount() > 0) {
+                $name = $query->fetchColumn();
+            }
+        }
+        return $name;
+    }
+
+    // fetch gang name based on the given gangID.
+    function getCharacterGang($uid) {
+        $name = null;
+
+        if(isset($uid)) {
+            $result = $this->fetchData('characters', 'gang', 'id', $uid);
+
+            if(isset($result) && $result >= 0) {
+                $name = $this->fetchData('gangs', 'name', 'id', $result);
+            }
+        }
+        return $name;
+    }
+    
     // fetch vehicle image based on the given vehicleID.
     function getVehicleImage($vid) {
         // question mark by default.
