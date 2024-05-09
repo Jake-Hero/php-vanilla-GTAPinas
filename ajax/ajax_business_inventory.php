@@ -37,7 +37,7 @@ $obj = new ucpProject($pdo);
                         <?php foreach($products as $p): ?>
                             <tr>
                                 <!-- Use getVehicleImage, if no images is detected from the value given, it will print out text instead. -->
-                                <td class="text-left">
+                                <td class="text-left align-middle">
                                     <?php if($biz['type'] == 3): ?>
                                         <img src="<?php echo $obj->getVehicleImage($p['name']); ?>" alt="<?php echo $p['name'] ?>" />
                                     <?php else: ?>
@@ -45,9 +45,9 @@ $obj = new ucpProject($pdo);
                                     <?php endif; ?>
                                 </td>
                                 <?php if($biz['type'] == 3): ?>
-                                <td><?php echo $obj->getVehicleName($p['name']); ?></td>
+                                <td class="align-middle"><?php echo $obj->getVehicleName($p['name']); ?></td>
                                 <?php endif; ?>
-                                <td class="text-right"><b>$</b><?php echo number_format($p['price']); ?>
+                                <td class="text-right align-middle"><b>$</b><?php echo number_format($p['price']); ?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
