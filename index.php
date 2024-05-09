@@ -35,7 +35,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-    <title><?php echo SITE_NAME; ?> - Home Page</title>
+    <title><?php echo SITE_NAME; ?> - Home</title>
 </head>
 
 <body>

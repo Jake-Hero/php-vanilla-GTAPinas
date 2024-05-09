@@ -2,6 +2,7 @@
 
 require __DIR__ . '/../class/db.php';
 require __DIR__ . '/../class/function.php';
+require __DIR__ . '/../inc/config.php';
 
 $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
 $pdo = $dbClass->getConnection();
@@ -19,27 +20,38 @@ $obj = new ucpProject($pdo);
             <h5 class="text-center border-bottom">Inventory</h5>
 
             <table class="table table-hover">
-                <tr>
-                    <td><b>Products</b></td>
-                    <td class="text-center"><?php echo number_format($biz['products']); ?></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td class="text-left"><b>Products</b></td>
+                        <td class="text-right"><?php echo number_format($biz['products']); ?></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h5 class="text-center border-bottom">Products</h5>
 
             <?php if(!empty($products)): ?>
                 <table class="table table-hover">
-                    <thead>
-                        <td>Product Name</td>
-                        <td>Price</td>
-                    </thead>
 
-                    <?php foreach($products as $p): ?>
-                        <tr>
-                            <td class="text-left"><?php echo $p['name'] ?></td>
-                            <td class="text-right"><b>$</b><?php echo number_format($p['price']); ?>
-                        </tr>
-                    <?php endforeach; ?>
+                    <tbody>
+                        <?php foreach($products as $p): ?>
+                            <tr>
+                                <!-- Use getVehicleImage, if no images is detected from the value given, it will print out text instead. -->
+                                <td class="text-left">
+                                    <?php if($biz['type'] == 3): ?>
+                                        <img src="<?php echo $obj->getVehicleImage($p['name']); ?>" alt="<?php echo $p['name'] ?>" />
+                                    <?php else: ?>
+                                        <?php echo $p['name']; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <?php if($biz['type'] == 3): ?>
+                                <td><?php echo $obj->getVehicleName($p['name']); ?></td>
+                                <?php endif; ?>
+                                <td class="text-right"><b>$</b><?php echo number_format($p['price']); ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+
                 </table>
             <?php else: ?>
                 <center>No products are being sold to this business.</center>
