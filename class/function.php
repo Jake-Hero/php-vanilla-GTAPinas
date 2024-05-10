@@ -158,6 +158,27 @@ class ucpProject {
         return $data;
     }
 
+    // is a user admin.
+    function isUserAdmin() {
+        $data = [];
+        $admin = 0;
+
+        if(isset($_SESSION['UID']))
+        {
+            $data = $this->getCharacters($_SESSION['UID']);
+
+            if($data !== null) {
+                foreach($data as $row) {
+                    if($row['admin'] > 0) {
+                        $admin = $row['admin'];
+                        break; 
+                    }
+                }
+            }
+        }
+        return $admin;
+    }
+
     // calculate all hours played from all the characters from the account.
     function calculateTotalHours($uid) {
         // limit the characters fetching to three only. (Design Compability & Game Script compability)
@@ -486,6 +507,74 @@ class ucpProject {
                 $data = $result->fetchColumn();
             }
         }
+        return $data;
+    }
+
+    // fetch a specific data from characters table and then have it rounded up to $limit;
+    function fetchTopCharacterData($column, $limit) {
+        $data = [];
+
+        if(isset($column)) {
+            $result = $this->pdo->prepare("SELECT $column, charname FROM characters ORDER BY $column DESC LIMIT $limit;");
+            $result->execute();
+
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $data[] = $row;
+                }
+            }            
+        }
+        return $data;
+    }
+
+    // fetch the most commonly/popular vehicle in the game. limit it to $limit;
+    function fetchPopularVehicles($limit) {
+        $data = [];
+
+        $query = "SELECT model, COUNT(*) AS model_count FROM vehicles WHERE owner >= 1 GROUP BY model ORDER BY model_count DESC LIMIT $limit;";
+            
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        }          
+        return $data;
+    }
+
+    // fetch the most commonly/popular used skins in the game. limit it to $limit;
+    function fetchPopularSkins($limit) {
+        $data = [];
+
+        $query = "SELECT last_skin, COUNT(*) AS skin_count FROM characters GROUP BY last_skin ORDER BY skin_count DESC LIMIT $limit;";
+            
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        }          
+        return $data;
+    }
+
+    // fetch the wealthiest users in game. limit it to $limit;
+    function fetchWealthyUsers($limit) {
+        $data = [];
+
+        $query = "SELECT (cash + bank) AS total_wealth, charname FROM characters ORDER BY total_wealth DESC LIMIT $limit;";
+            
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        }          
         return $data;
     }
 
