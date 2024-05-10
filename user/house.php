@@ -79,13 +79,15 @@
                         <div class="table-responsive">
                             <table class="table table-hover text-center">
                                 <thead>
-                                    <td></td>
-                                    <td><b>ID</b></td>
-                                    <td><b>Level</b></td>
-                                    <td><b>Price</b></td>
-                                    <td><b>Status</b></td>
-                                    <td><b>Furnitures</b></td>
-                                    <td></td>
+                                    <tr>
+                                        <th></th>
+                                        <th>ID</th>
+                                        <th>Level</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Furnitures</th>
+                                        <th></th>
+                                    </tr>
                                 </thead>
 
                                 <?php foreach($houses as $house): ?>

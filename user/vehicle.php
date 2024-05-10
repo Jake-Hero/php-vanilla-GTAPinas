@@ -79,12 +79,14 @@
                         <div class="table-responsive">
                             <table class="table table-hover text-center">
                                 <thead>
-                                    <td></td>
-                                    <td><b>Model</b></td>
-                                    <td><b>Locked</b></td>
-                                    <td><b>Mileage</b></td>
-                                    <td><b>Fuel</b></td>
-                                    <td></td>
+                                    <tr>
+                                        <th></th>
+                                        <th>Model</th>
+                                        <th>Locked</th>
+                                        <th>Mileage</th>
+                                        <th>Fuel</th>
+                                        <th></th>
+                                    </tr>
                                 </thead>
 
                                 <tbody>
