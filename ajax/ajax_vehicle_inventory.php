@@ -8,11 +8,13 @@ $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
 $pdo = $dbClass->getConnection();
 $obj = new ucpProject($pdo);
 
+$id = $_POST['vehid'];
+
 ?>
 
-<?php if (isset($_POST['vehid'])): ?>
-    <?php $vehdata = $obj->fetchVehicles($_POST['vehid']); ?>
-    <?php $weapons = $obj->fetchVehicleWeapons($_POST['vehid']); ?>
+<?php if (isset($id)): ?>
+    <?php $vehdata = $obj->fetchVehicleData($id); ?>
+    <?php $weapons = $obj->fetchVehicleWeapons($id); ?>
 
     <?php if(!empty($vehdata)): ?>
         <?php foreach($vehdata as $v): ?>

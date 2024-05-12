@@ -16,6 +16,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     <title><?php echo SITE_NAME; ?> - Admin Panel</title>
@@ -29,6 +30,9 @@
 
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
+
+                <div class="row">
+                </div>
 
             <!-- Emulate Card Ends here -->
             </div>

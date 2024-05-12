@@ -8,11 +8,13 @@ $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
 $pdo = $dbClass->getConnection();
 $obj = new ucpProject($pdo);
 
+$bizid = $_POST['bizid'];
+
 ?>
 
-<?php if (isset($_POST['bizid'])): ?>
-    <?php $bizdata = $obj->fetchBizData($_POST['bizid']); ?>
-    <?php $products = $obj->fetchBizProducts($_POST['bizid']); ?>
+<?php if (isset($bizid)): ?>
+    <?php $bizdata = $obj->fetchBizData($bizid); ?>
+    <?php $products = $obj->fetchBizProducts($bizid); ?>
 
     <?php if(!empty($bizdata)): ?>
         <?php foreach($bizdata as $biz): ?>

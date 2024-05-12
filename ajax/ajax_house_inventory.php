@@ -7,11 +7,13 @@ $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
 $pdo = $dbClass->getConnection();
 $obj = new ucpProject($pdo);
 
+$houseid = $_POST['houseid'];
+
 ?>
 
-<?php if (isset($_POST['houseid'])): ?>
-    <?php $housedata = $obj->fetchHouseData($_POST['houseid']); ?>
-    <?php $weapons = $obj->fetchHouseWeapons($_POST['houseid']); ?>
+<?php if (isset($houseid)): ?>
+    <?php $housedata = $obj->fetchHouseData($houseid); ?>
+    <?php $weapons = $obj->fetchHouseWeapons($houseid); ?>
 
     <?php if(!empty($housedata)): ?>
         <?php foreach($housedata as $house): ?>

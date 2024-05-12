@@ -99,7 +99,7 @@
                                         <td class="align-middle"><?php echo $locked; ?></td>
                                         <td class="align-middle"><?php echo number_format($v['mileage'], 2); ?>km</td>
                                         <td class="align-middle"><?php echo ceil($v['fuel']); ?>%</td>
-                                        <td class="align-middle"><a id="inventory" href="#" data-bs-toggle="modal" data-id="<?php echo $v['id']; ?>" data-bs-target="#inventoryModal">Inventory</a></td>
+                                        <td class="align-middle"><a href="#" data-bs-toggle="modal" data-id="<?php echo $v['id']; ?>" data-bs-target="#inventoryModal">Inventory</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -123,9 +123,8 @@
     <?php require DIR_INC . 'footer.php'; ?>
 
     <script>
-        $('#inventoryModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); 
-            var id = button.data('id'); 
+        $(document).on('click', '[data-bs-toggle="modal"]', function() {
+            var id = $(this).data('id');
 
             $('#modalDataId').text(id);
 
