@@ -125,9 +125,8 @@
     <?php require DIR_INC . 'footer.php'; ?>
 
     <script>
-        $('#inventoryModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); 
-            var id = button.data('id'); 
+        $(document).on('click', '[data-bs-toggle="modal"]', function() {
+            var id = $(this).data('id');
 
             $('#modalDataId').text(id);
 

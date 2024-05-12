@@ -119,7 +119,7 @@
                     {
                         render: function (data, type, row, meta) {
                             var json = encodeURIComponent(JSON.stringify(row));
-                            return '<a href="#" href="#" data-bs-toggle="modal" data-array="' + json + '" data-bs-target="#unbanModal">Unban</a>';
+                            return '<a href="#" data-bs-toggle="modal" data-array="' + json + '" data-bs-target="#unbanModal">Unban</a>';
                         }
                     }
                 ]

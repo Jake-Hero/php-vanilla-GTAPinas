@@ -601,6 +601,23 @@ class ucpProject {
         return $skin_file;
     }
 
+    // fetch the vehicle's data owned by the character.
+    function fetchVehicleData($id) {
+        $vehicles = [];
+
+        if(isset($id)) {
+            $result = $this->pdo->prepare("SELECT * FROM vehicles WHERE id = :id");
+            $result->execute(array(':id' => $id));
+
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $vehicles[] = $row;
+                }
+            }
+        }
+        return $vehicles;
+    }
+
     // fetch all the vehicles owned by the character.
     function fetchVehicles($id) {
         $vehicles = [];
@@ -623,7 +640,7 @@ class ucpProject {
         $weapons = [];
 
         if(isset($vid)) {
-            $data = $this->fetchVehicles($vid);
+            $data = $this->fetchVehicleData($vid);
         
             if(!empty($data)) {
                 foreach($data as $row) {
