@@ -496,7 +496,7 @@ class ucpProject {
 
         if(isset($uid)) {
             // limit the characters fetching to three only. (Design Compability & Game Script compability)
-            $result = $this->pdo->prepare("SELECT * FROM characters WHERE uid = :uid LIMIT 3;");
+            $result = $this->pdo->prepare("SELECT * FROM characters WHERE uid = :uid ORDER BY slot ASC LIMIT 3;");
             $result->execute(array(':uid' => $_SESSION['UID']));
 
             if ($result->rowCount() > 0) {

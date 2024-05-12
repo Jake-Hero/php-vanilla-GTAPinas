@@ -17,6 +17,13 @@
     $vip = $obj->fetchData('accounts', 'donator', 'id', $_SESSION['UID']);
     $viptime = $obj->fetchData('accounts', 'donatortime', 'id', $_SESSION['UID']);
     $vip_expiration = ($vip > 0) ? ('('.date('m/d/Y H:i:s', $viptime).')') : ('');
+
+    $highest_slot = 0;
+    foreach ($users as $user) {
+        if ($user['slot'] > $highest_slot) {
+            $highest_slot = $user['slot'];
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -47,47 +54,61 @@
 
                 <div class="row d-flex justify-content-center">
                 <!-- List all characters -->
-                    <?php foreach ($users as $user): ?>
-                    <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
-                        <div class="shadow-lg p-3 mb-5 bg-body rounded">
-                        <!-- Cast shadows -->
-                            <!-- Make it clickable to user/character.php?id=['id'] -->
-                            <a href="<?php echo SITE_URL; ?>/user/character.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
-                                <div class="card-body bg-white">
-                                    <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
-                                    <h4><?php echo $user['charname']; ?></h4>
-                                    <p>
-                                        <b>Last Played:</b> <?php echo date('m/d/Y H:i:s', $user['last_login']); ?>
-                                        <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?>
-                                    </p>
-                                </div>
-                            </a>
-                            <!-- End of Clickable -->
-                        </div>
-                        <!-- Cast shadows ends here -->
-                    </div>
-                    <?php endforeach; ?>
+                    <?php for ($i = 1; $i <= 3; $i++): ?>
 
-                    <!-- Display "Create" card for empty slots -->
-                    <?php
-                        $empty_slots = 3 - count($users);
-                        for ($i = 0; $i < $empty_slots; $i++) {
-                            ?>
-                            <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
-                                <div class="shadow-lg p-3 mb-5 bg-body rounded">
-                                    <a href="<?php echo SITE_URL; ?>/user/create_character.php" style="text-decoration: none; color: inherit;">
-                                        <div class="card-body bg-white">
-                                            <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="300" />
+                        <?php $character_exists = false; ?>
 
-                                            <h4>Create Character</h4>
-                                            <p><b>Slot <?php echo ($i + 1) + count($users); ?></b></p>
-                                        </div>
-                                    </a>
+                        <?php foreach ($users as $user): ?>
+
+                            <?php if ($user['slot'] == $i): ?>
+
+                                <?php $character_exists = true; ?>
+
+                                <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
+                                    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                                    <!-- Cast shadows -->
+                                        <!-- Make it clickable to user/character.php?id=['id'] -->
+                                        <a href="<?php echo SITE_URL; ?>/user/character.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                            <div class="card-body bg-white">
+                                                <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
+                                                <h4><?php echo $user['charname']; ?></h4>
+                                                <p>
+                                                    <b>Last Played:</b> <?php echo date('m/d/Y H:i:s', $user['last_login']); ?>
+                                                    <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <!-- End of Clickable -->
+                                    </div>
+                                    <!-- Cast shadows ends here -->
                                 </div>
-                            </div>
-                            <?php
-                        }
-                    ?>
+                                <?php break; ?>
+                            
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
+                        <!-- Display "Create" card for empty slots -->
+                        <?php
+                            if (!$character_exists) {
+                                ?>
+                                <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
+                                    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                                        <a href="<?php echo SITE_URL; ?>/user/create_character.php" style="text-decoration: none; color: inherit;">
+                                            <div class="card-body bg-white">
+                                                <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
+                                                <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="325" />
+
+                                                <h4>Create Character</h4>
+                                                <p><b>Slot <?php echo $i; ?></b></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        ?>
+                    <?php endfor; ?>
                 <!-- List all characters Ends here-->
                 </div>
             <!-- Emulate Card Ends here -->
