@@ -15,10 +15,13 @@
     $cid = $_GET['id'];
     // fetch the character's vehicles
     $vehicle = $obj->fetchVehicles($cid);
+
+    $user = $obj->getCharacterData($cid);
+    $check_owner = $obj->isCharacterOwnedByUser($cid, $_SESSION['UID']);
     
-    // if $vehicle is null or
+    // if $user is null or
     // if no IDs were specified = throw 404 error.
-    if(!isset($cid)) {
+    if(!$check_owner || empty($user) || !isset($cid)) {
         //header("Location:" . SITE_URL . "/user/dashboard.php");
         $obj->throw404();
     }

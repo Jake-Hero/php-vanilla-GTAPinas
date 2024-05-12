@@ -67,6 +67,27 @@
                         <!-- Cast shadows ends here -->
                     </div>
                     <?php endforeach; ?>
+
+                    <!-- Display "Create" card for empty slots -->
+                    <?php
+                        $empty_slots = 3 - count($users);
+                        for ($i = 0; $i < $empty_slots; $i++) {
+                            ?>
+                            <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
+                                <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                                    <a href="<?php echo SITE_URL; ?>/user/create_character.php" style="text-decoration: none; color: inherit;">
+                                        <div class="card-body bg-white">
+                                            <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="300" />
+
+                                            <h4>Create Character</h4>
+                                            <p><b>Slot <?php echo ($i + 1) + count($users); ?></b></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    ?>
                 <!-- List all characters Ends here-->
                 </div>
             <!-- Emulate Card Ends here -->
