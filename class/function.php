@@ -143,6 +143,19 @@ class ucpProject {
         }
     }
 
+    // check if a character is owned by that user.
+    function isCharacterOwnedByUser($id, $uid) {
+        if(isset($id)) {
+            $result = $this->pdo->prepare("SELECT * FROM characters WHERE id = :id AND uid = :uid LIMIT 1;");
+            $result->execute(array(':id' => $id, ':uid' => $uid));
+            
+            if ($result->rowCount() > 0) {
+                return true;
+            }
+        }
+        return false;       
+    }
+
     // fetch a character's data.
     function getCharacterData($id) {
         $data = null;
@@ -167,7 +180,7 @@ class ucpProject {
         {
             $data = $this->getCharacters($_SESSION['UID']);
 
-            if($data !== null) {
+            if(!empty($data)) {
                 foreach($data as $row) {
                     if($row['admin'] > 0) {
                         $admin = $row['admin'];

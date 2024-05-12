@@ -13,10 +13,11 @@
 
     $cid = $_GET['id'];
     $user = $obj->getCharacterData($cid);
+    $check_owner = $obj->isCharacterOwnedByUser($cid, $_SESSION['UID']);
 
     // if $user is null or
     // if no IDs were specified = throw 404 error.
-    if($user == null || !isset($cid)) {
+    if(!$check_owner || empty($user) || !isset($cid)) {
         //header("Location:" . SITE_URL . "/user/dashboard.php");
         $obj->throw404();
     }   
