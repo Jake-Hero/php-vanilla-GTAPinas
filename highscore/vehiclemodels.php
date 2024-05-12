@@ -29,6 +29,10 @@
             <!-- Emulate Card Ends here -->
             </div>
 
+            <div class='alert alert-warning'>
+                <strong>Vehicles associated with Factions, Gangs, and Jobs are not included in the count.</strong> 
+            </div>
+
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
                 <div class="table-responsive">

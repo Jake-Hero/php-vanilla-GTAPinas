@@ -97,8 +97,8 @@
                                         <td class="text-left"><img src="<?php echo $obj->getVehicleImage($v['model']); ?>" alt="<?php echo $v['model'] ?>" /></td>
                                         <td class="align-middle"><?php echo $obj->getVehicleName($v['model']); ?></td>
                                         <td class="align-middle"><?php echo $locked; ?></td>
-                                        <td class="align-middle"><?php echo $v['mileage']; ?></td>
-                                        <td class="align-middle"><?php echo $v['fuel']; ?></td>
+                                        <td class="align-middle"><?php echo number_format($v['mileage'], 2); ?>km</td>
+                                        <td class="align-middle"><?php echo ceil($v['fuel']); ?>%</td>
                                         <td class="align-middle"><a id="inventory" href="#" data-bs-toggle="modal" data-id="<?php echo $v['id']; ?>" data-bs-target="#inventoryModal">Inventory</a></td>
                                     </tr>
                                 <?php endforeach; ?>
