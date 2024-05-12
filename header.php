@@ -34,7 +34,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="<?php echo SITE_URL; ?>/highscore/playingtime.php">Active Players</a>
                         <a class="dropdown-item" href="<?php echo SITE_URL; ?>/highscore/wealthiest.php">Wealthiest Players</a>
-                        <a class="dropdown-item" href="<?php echo SITE_URL; ?>/highscore/skins.php">Popular Skins</a>
+                        <a class="dropdown-item" href="<?php echo SITE_URL; ?>/highscore/skins.php">Used Skins</a>
                         <a class="dropdown-item" href="<?php echo SITE_URL; ?>/highscore/vehiclemodels.php">Popular Vehicle Models</a>
                     </div>
                 </li>  

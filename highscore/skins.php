@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-    <title><?php echo SITE_NAME . ' - ' . 'Popular Skins'; ?></title>
+    <title><?php echo SITE_NAME . ' - ' . 'Used Skins'; ?></title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
-                <h1 class="text-center mb-4 mt-3">Top 20 Popular Skins</h1>
+                <h1 class="text-center mb-4 mt-3">Top 20 Used Skins</h1>
             <!-- Emulate Card Ends here -->
             </div>
 

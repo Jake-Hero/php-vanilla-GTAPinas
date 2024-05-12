@@ -25,6 +25,7 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
+            <?php require_once __DIR__ . '/../admin_header.php'; ?>
 
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
