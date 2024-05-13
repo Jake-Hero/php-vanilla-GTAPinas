@@ -749,6 +749,26 @@ class ucpProject {
         return $weapons;
     }
     
+    function countRowsInTableGreaterThan($table, $specifier, $value) {
+        $count = 0;
+
+        if(isset($table) && isset($specifier) && isset($value)) {
+            $sql = "SELECT COUNT(*) FROM $table WHERE $specifier >= :value";
+            $result = $this->pdo->prepare($sql);
+            $result->execute(array(':value' => $value));
+            $count = $result->fetchColumn();
+        }
+        return $count;
+    }
+
+    function secondsToHMS($seconds) {
+        $hours = floor($seconds / 3600);
+        $minutes = floor(($seconds % 3600) / 60);
+        $seconds = $seconds % 60;
+        
+        return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+    }
+
     // Count rows in the table.
     function countRowsInTable($table) {
         $count = 0;
