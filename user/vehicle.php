@@ -81,7 +81,7 @@
                     <?php if(!empty($vehicle)) : ?>
                         <div class="table-responsive">
                             <table class="table table-hover text-center">
-                                <thead>
+                                <thead class="table-dark">
                                     <tr>
                                         <th></th>
                                         <th>Model</th>

@@ -66,7 +66,7 @@
 
                 <div class="table-responsive">
                     <table id="banTable" class="table table-hover text-center">
-                        <thead>
+                        <thead class="table-dark">
                             <tr>
                                 <th class="text-center"># ID</th>
                                 <th class="text-center">Date</th>
