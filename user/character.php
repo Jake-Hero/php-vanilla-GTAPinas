@@ -83,8 +83,8 @@
                                     <b>ID:</b> <?php echo number_format($user['id']); ?><br/>
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
-                                    <b>Hours Online:</b> <?php echo number_format($user['hours']); ?> hour/s<br/>
-                                    <b>Last Played:</b> <?php echo date('M d, Y H:i:s', $user['last_login']); ?>
+                                    <b>Online Time:</b> <?php echo $obj->secondsToHMS($user['hours']); ?><br/>
+                                    <b>Last Played:</b> <?php echo date('M d, Y h:iA', $user['last_login']); ?>
                                 </div>
                             </div>
 
@@ -92,7 +92,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <b>Creation:</b> <?php echo date('M d, Y H:i:s', $user['creation']); ?><br/>
+                                    <b>Creation:</b> <?php echo date('M d, Y h:i:A', strtotime($user['creation'])); ?><br/>
                                     <b>Date of Birth:</b> <?php echo $user['birthday'] . ' (<b>' . $obj->calculateCharacterAge($user['birthday']) . ' years old</b>)'; ?><br/>
                                     <b>Bank:</b> $<?php echo number_format($user['bank']); ?><br/>
                                     <b>Pocket Money:</b> $<?php echo number_format($user['cash']); ?><br/>

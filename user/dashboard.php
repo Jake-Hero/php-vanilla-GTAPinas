@@ -16,7 +16,7 @@
     $verified = ($obj->fetchData('accounts', 'verified', 'id', $_SESSION['UID'])) ? ("Verified") : ("Not Verified");
     $vip = $obj->fetchData('accounts', 'donator', 'id', $_SESSION['UID']);
     $viptime = $obj->fetchData('accounts', 'donatortime', 'id', $_SESSION['UID']);
-    $vip_expiration = ($vip > 0) ? ('('.date('m/d/Y H:i:s', $viptime).')') : ('');
+    $vip_expiration = ($vip > 0) ? ('('.date('m/d/Y h:iA', $viptime).')') : ('');
 
     $highest_slot = 0;
     foreach ($users as $user) {
@@ -73,7 +73,7 @@
                                                 <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                                                 <h4><?php echo $user['charname']; ?></h4>
                                                 <p>
-                                                    <b>Hours Online:</b> <?php echo number_format($user['hours']); ?>
+                                                    <b>Online Time:</b> <?php echo $obj->secondsToHMS($user['hours']); ?>
                                                     <p class="text-muted">ID: <?php echo $user['id'] ?></p>
                                                 </p>
                                             </div>
@@ -127,7 +127,7 @@
 
                         <tr>
                             <td><b>Registration Date</b></td>
-                            <td><?php echo date('F d, Y H:i:s', $obj->fetchData('accounts', 'registerdate', 'id', $_SESSION['UID'])); ?></td>
+                            <td><?php echo date('F d, Y h:iA', $obj->fetchData('accounts', 'registerdate', 'id', $_SESSION['UID'])); ?></td>
                         </tr>
 
                         <tr>

@@ -38,6 +38,25 @@
                     <strong>Admin MOTD: <?php echo $obj->fetchConfigData('ADMIN_MOTD'); ?></strong> 
                 </div>
 
+                <div>
+                    <?php 
+
+                    $highest_player = $obj->fetchConfigData('highestplayer');
+                    $date_recorded = date('F d, Y h:iA', $obj->fetchConfigData('highestplayertimestamp'));
+                    $properties = $obj->countRowsInTable('properties');
+                    $business = $obj->countRowsInTable('business');
+                    $vips = $obj->countRowsInTableGreaterThan('accounts', 'donator', 1);
+                    $staffs = $obj->countRowsInTableGreaterThan('accounts', 'donator', 1);
+                    $vehicles = $obj->countRowsInTable('vehicles');
+
+                    ?>
+
+                    <p>The highest player recorded on the server was on <b><?php echo $date_recorded; ?></b> (<b><?php echo $highest_player; ?> players</b>)</p>
+                    <p>There are <b><?php echo number_format($vehicles); ?></b> vehicles in the server.</p>
+                    <p>There are <b><?php echo number_format($business); ?></b> businesses in the server.</p>
+                    <p>There are <b><?php echo number_format($vips); ?></b> VIPs in the server.</p>
+                </div>
+
                 <div class="row">
                     <div class="col border-top border-end border-4 text-center">
                         <div style="margin: 50px">

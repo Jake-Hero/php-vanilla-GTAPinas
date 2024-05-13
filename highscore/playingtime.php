@@ -37,7 +37,7 @@
                             <tr>
                                 <th>Rank</th>
                                 <th>Name</th>
-                                <th>Hour/s</th>
+                                <th>Online Time</th>
                             </tr>
                         </thead>
 
@@ -49,7 +49,7 @@
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $d['charname']; ?></td>
-                                    <td><?php echo number_format($d['hours']); ?></td>
+                                    <td><?php echo $obj->secondsToHMS($d['hours']); ?></td>
                                 </tr>
 
                                 <?php $i ++; ?>
