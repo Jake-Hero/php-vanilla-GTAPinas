@@ -33,7 +33,7 @@
             <!-- Emulate Card -->
                 <div class="table-responsive">
                     <table class="table table-hover text-center">
-                        <thead>
+                        <thead class="table-dark">
                             <tr>
                                 <th>Rank</th>
                                 <th></th>

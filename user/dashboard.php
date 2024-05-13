@@ -73,8 +73,8 @@
                                                 <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
                                                 <h4><?php echo $user['charname']; ?></h4>
                                                 <p>
-                                                    <b>Last Played:</b> <?php echo date('m/d/Y H:i:s', $user['last_login']); ?>
-                                                    <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?>
+                                                    <b>Hours Online:</b> <?php echo number_format($user['hours']); ?>
+                                                    <p class="text-muted">ID: <?php echo $user['id'] ?></p>
                                                 </p>
                                             </div>
                                         </a>
@@ -97,7 +97,7 @@
                                         <a href="<?php echo SITE_URL; ?>/user/create_character.php" style="text-decoration: none; color: inherit;">
                                             <div class="card-body bg-white">
                                                 <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
-                                                <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="325" />
+                                                <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
 
                                                 <h4>Create Character</h4>
                                                 <p><b>Slot <?php echo $i; ?></b></p>
@@ -131,7 +131,7 @@
                         </tr>
 
                         <tr>
-                            <td><b>Total Hour/s Played</b></td>
+                            <td><b>Total Hours Online</b></td>
                             <td><?php echo number_format($obj->calculateTotalHours($_SESSION['UID'])); ?></td>
                         </tr>
 
