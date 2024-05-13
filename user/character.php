@@ -83,7 +83,7 @@
                                     <b>ID:</b> <?php echo number_format($user['id']); ?><br/>
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
-                                    <b>Hour/s Played:</b> <?php echo number_format($user['hours']); ?> hour/s<br/>
+                                    <b>Hours Online:</b> <?php echo number_format($user['hours']); ?> hour/s<br/>
                                     <b>Last Played:</b> <?php echo date('M d, Y H:i:s', $user['last_login']); ?>
                                 </div>
                             </div>

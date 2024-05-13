@@ -81,7 +81,7 @@
                     <?php if(!empty($business)) : ?>
                         <div class="table-responsive">
                             <table class="table table-hover text-center">
-                                <thead>
+                                <thead class="table-dark">
                                     <tr>
                                         <th></th>
                                         <th>ID</th>

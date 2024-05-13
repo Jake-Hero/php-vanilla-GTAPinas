@@ -490,6 +490,69 @@ class ucpProject {
         return $result->rowCount();
     }
 
+    // fetch all the gangs in the server.
+    function getGangs() {
+        $gangs = [];
+
+        // limit the gangs fetching to twenty only. (Design Compability & Game Script compability)
+        $result = $this->pdo->prepare("SELECT * FROM gangs ORDER BY id ASC LIMIT 20;");
+        $result->execute();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $gangs[] = $row;
+            }
+        }
+        return $gangs;
+    }
+
+    // fetch all the factions in the server.
+    function getFactions() {
+        $factions = [];
+
+        // limit the factions fetching to twenty only. (Design Compability & Game Script compability)
+        $result = $this->pdo->prepare("SELECT * FROM factions ORDER BY id ASC LIMIT 20;");
+        $result->execute();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $factions[] = $row;
+            }
+        }
+        return $factions;
+    }
+    
+    // fetch all the turfs in the server.
+    function getTurfs() {
+        $turfs = [];
+
+        $result = $this->pdo->prepare("SELECT * FROM turfs ORDER BY turfid");
+        $result->execute();
+
+        if ($result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $turfs[] = $row;
+            }
+        }
+        return $turfs;
+    }
+
+    // compute average.
+    function computeAverage($array) {
+        $average = 0;
+
+        if(is_array($array)) {
+            $sum = array_sum($array); 
+            $count = count($array);   
+            
+            if ($count > 0) {
+                $average = $sum / $count; 
+            }
+        }
+
+        return $average;
+    }
+
     // fetch all the characters assigned to that account ID.
     function getCharacters($uid) {
         $characters = [];
@@ -521,6 +584,21 @@ class ucpProject {
             }
         }
         return $data;
+    }
+
+    // fetch data from server's config table.
+    function fetchConfigData($column) {
+        $data = null;
+
+        if(isset($column)) {
+            $result = $this->pdo->prepare("SELECT $column FROM config");
+            $result->execute();
+            
+            if ($result->rowCount() > 0) {
+                $data = $result->fetchColumn();
+            }
+        }   
+        return $data;     
     }
 
     // fetch a specific data from characters table and then have it rounded up to $limit;
@@ -671,6 +749,32 @@ class ucpProject {
         return $weapons;
     }
     
+    // Count rows in the table.
+    function countRowsInTable($table) {
+        $count = 0;
+
+        if(isset($table)) {
+            $sql = "SELECT COUNT(*) FROM $table";
+            $result = $this->pdo->prepare($sql);
+            $result->execute();
+            $count = $result->fetchColumn();
+        }
+        return $count;
+    }
+
+    // Count rows in the table.
+    function countRowsInTableEx($table, $specifier, $value) {
+        $count = 0;
+
+        if(isset($table) && isset($specifier) && isset($value)) {
+            $sql = "SELECT COUNT(*) FROM $table WHERE $specifier = :value";
+            $result = $this->pdo->prepare($sql);
+            $result->execute(array(':value' => $value));
+            $count = $result->fetchColumn();
+        }
+        return $count;
+    }
+
     // fetch faction name based on the given factionID.
     function getCharacterFaction($uid) {
         $name = null;
@@ -854,6 +958,21 @@ class ucpProject {
             }
         }
         return $rank_name;
+    }
+
+    // fetch turf's type
+    function getTurfType($type) {
+        $turf_type = "Unset";
+
+        if(isset($type)) {
+            switch($type) {
+                case 1: $turf_type = "Crack"; break;
+                case 2: $turf_type = "Meth"; break;
+                case 3: $turf_type = "Materials"; break;
+                case 4: $turf_type = "Money"; break;
+            }
+        }
+        return $turf_type;
     }
 
     // Throw 404 error
