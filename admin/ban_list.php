@@ -150,24 +150,22 @@
                     text: "Successfully unbanned.",
                     icon: "success"
                 }).then((result) => {
-                    if (result.isConfirmed) {
-                        var dataString='username='+ username;
-                
-                        $.ajax(
+                    var dataString='username='+ username;
+            
+                    $.ajax(
+                    {
+                        type:"post",
+                        url: "ajax/ajax_unban.php",
+                        data: dataString,
+                        success: function(data)
                         {
-                            type:"post",
-                            url: "ajax/ajax_unban.php",
-                            data: dataString,
-                            success: function(data)
-                            {
-                                //$("#ajax").html(data);
-                                location.reload();
-                            },
-                            error: function(jqXHR, textStatus, errorThrown) {
-                                console.log(textStatus, errorThrown);
-                            }
-                        });
-                    }
+                            //$("#ajax").html(data);
+                            location.reload();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
                 });
             });
         });
