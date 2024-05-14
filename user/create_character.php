@@ -44,6 +44,15 @@
                 <div class="col">
                     <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
                 </div>
+
+                <div class="col d-flex justify-content-end">
+                    <div class="row">
+                        <!-- Settings -->
+                        <div class="col">
+                            <a href="<?php echo SITE_URL; ?>/user/settings.php" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class='alert alert-info'>

@@ -48,6 +48,7 @@
                     $vips = $obj->countRowsInTableGreaterThan('accounts', 'donator', 1);
                     $staffs = $obj->countRowsInTableGreaterThan('accounts', 'donator', 1);
                     $vehicles = $obj->countRowsInTable('vehicles');
+                    $characters = $obj->countRowsInTable('characters');
 
                     ?>
 
@@ -55,6 +56,7 @@
                     <p>There are <b><?php echo number_format($vehicles); ?></b> vehicles in the server.</p>
                     <p>There are <b><?php echo number_format($business); ?></b> businesses in the server.</p>
                     <p>There are <b><?php echo number_format($vips); ?></b> VIPs in the server.</p>
+                    <p>There are <b><?php echo number_format($characters); ?></b> total of characters made in the server.</p>
                 </div>
 
                 <div class="row">
