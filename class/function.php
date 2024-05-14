@@ -96,7 +96,7 @@ class ucpProject {
                     // Verify password using bcrypt
                     if (password_verify($password, $row['password'])) {
                         $_SESSION['UID'] = $row['id'];
-                        $_SESSION['USER'] = $row;
+                        $_SESSION['username'] = $row['username'];
 
                         echo '<script>window.location=\'user/dashboard.php\'</script>';
                         return; // Exit function after successful login
