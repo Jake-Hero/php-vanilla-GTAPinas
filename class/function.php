@@ -1001,6 +1001,14 @@ class ucpProject {
         include __DIR__ . "/../404.php";
         return die();
     }
+
+    function isRpNickname($nickname) {
+        // Define the regular expression pattern
+        $regex = "/^[A-Z][a-z]+_[A-Z][a-z]+$/";
+    
+        // Check if the regex pattern matches the nickname
+        return preg_match($regex, $nickname);
+    }    
 }
 
 ?>
