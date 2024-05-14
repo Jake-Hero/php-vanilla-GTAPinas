@@ -10,6 +10,13 @@
         header("Location: " . SITE_URL . "/index.php");
         die;
     }
+
+    $slot = $_GET['slot'];
+    $exist = $obj->fetchData('characters', 'id', 'slot', $slot);
+
+    if(!isset($slot) || !empty($exist) || !($slot <= 3 && $slot >= 1)) {
+        $obj->throw404();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +29,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title><?php echo SITE_NAME; ?> - Create Character</title>
 </head>
@@ -37,10 +46,14 @@
                 </div>
             </div>
 
+            <div class='alert alert-info'>
+                <strong>Please <a href="https://www.open.mp/docs/scripting/resources/skins" target="_blank">click here</a> to check for skin IDs.</strong> 
+            </div>
+
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
                 <div class="container">
-                    <h1 class="text-center mb-4 mt-3">Create Character</h1>
+                    <h1 class="text-center mb-4 mt-3">Create Character - Slot <?php echo $slot; ?></h1>
 
                     <form method="POST" action="">
                         <div class="col-lg-8 col-md-8 col-xs-12 float-none mx-auto">
@@ -56,12 +69,14 @@
 
                             <div class="row d-flex justify-content-center">
 
-                                <div class="col-lg-6 col-xl-6 col-md-6 col-xs-12 text-center">
+                                <div class="col-lg-12 col-xl-12 col-md-12 col-xs-12 text-center">
                                     <img src="<?php echo $obj->getSkinImage(0); ?>" alt="Skin" name="skin_pic" height="300" />
                                 </div>
 
                                 <!-- Character's Info -->
                                 <div class="col">
+                                    <input type="number" value="<?php echo $slot; ?>" id="slotForm" hidden />
+
                                     <div class="form-group">
                                         <label class="form-label">Character Name</label>
                                         <input class="form-control" type="text" placeholder="Firstname_Lastname (e.g. John_Doe)" name="char_name" id="charnameForm" />
@@ -87,7 +102,7 @@
                                     </div>
 
                                     <div class="py-3 mt-3">
-                                        <button type="submit" class="btn btn-info w-100 text-white" onclick="return settingUser()">
+                                        <button type="submit" class="btn btn-info w-100 text-white" id="createBtn">
                                             Create Character
                                         </button>
                                     </div>
@@ -148,7 +163,7 @@
                 $("img[name=skin_pic]").attr("src", picture);
             });
 
-            $("#skinForm").keyup(function(event) {
+            $("#skinForm").change(function(){
                 var value = parseInt($(this).val());
                 var gender = parseInt($("#genderForm").val());
                 var isValid = -1;
@@ -157,29 +172,74 @@
                 if(gender == 1) {
                     isValid = $.inArray(value, maleSkins);
 
-                    if(isValid !== -1) {
-                        picture = siteUrl + "/assets/pictures/skins/" + value + ".png";
-                        $("img[name=skin_pic]").attr("src", picture);
-                    } else {
+                    if(isValid == -1) {
                         $("#skinForm").val(1);
+                        value = $("#skinForm").val();
                     }
+
+                    picture = siteUrl + "/assets/pictures/skins/" + value + ".png";
+                    $("img[name=skin_pic]").attr("src", picture);
                 }
 
                 if(gender == 2) {
                     isValid = $.inArray(value, femaleSkins);
 
-                    if(isValid !== -1) {
-                        picture = siteUrl + "/assets/pictures/skins/" + value + ".png";
-                        $("img[name=skin_pic]").attr("src", picture);
-                    } else {
+                    if(isValid == -1) {
                         $("#skinForm").val(9);
+                        value = $("#skinForm").val();
                     }
+
+                    picture = siteUrl + "/assets/pictures/skins/" + value + ".png";
+                    $("img[name=skin_pic]").attr("src", picture);
                 }
             });
 
-            $("#skinForm").change(function(){
-                var picture = siteUrl + "/assets/pictures/skins/" + $(this).val() + ".png";
-                $("img[name=skin_pic]").attr("src", picture);
+            $('#createBtn').on('click', function(e) {
+                e.preventDefault();
+
+                var name = document.getElementById('charnameForm').value;
+                var skin = document.getElementById('skinForm').value;
+                var gender = document.getElementById('genderForm').value;
+                var bday = document.getElementById('bdayForm').value;
+                var slot = document.getElementById('slotForm').value;
+
+                var dateParts = bday.split('/');
+                var formattedDate = '';
+                if(dateParts.length === 3) {
+                    var day = dateParts[1];
+                    var month = dateParts[0];
+                    var year = dateParts[2];
+                    formattedDate = day + '-' + month + '-' + year;
+                }
+
+                var dataString='slot='+ slot + '&name=' + name + '&gender=' + gender + '&birthday=' + formattedDate + '&skin=' + skin;
+
+                $.ajax(
+                {
+                    type:"post",
+                    url: "ajax/ajax_create_character.php",
+                    data: dataString,
+                    success: function(data)
+                    {
+                        if(data !== 'Success') {
+                            $("#ajax").html(data);
+                        }
+                        else {
+                            Swal.fire({
+                                title: "Created",
+                                text: "Successfully created a new character.",
+                                icon: "success"
+                            }).then((result) => {
+                                window.location.href = "user/dashboard.php";
+                            });
+                        }
+                        //window.location.href = "user/dashboard.php";
+                        //console.log(data);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
             });
 
             $('[data-toggle="datepicker"]').datepicker();
