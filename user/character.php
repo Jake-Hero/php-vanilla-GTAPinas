@@ -84,7 +84,7 @@
                                     <b>Level:</b> <?php echo $user['level']; ?><br/>
                                     <b>EXP Points:</b> <?php echo $user['exp']; ?><br/>
                                     <b>Online Time:</b> <?php echo $obj->secondsToHMS($user['hours']); ?><br/>
-                                    <b>Last Played:</b> <?php echo date('M d, Y h:iA', $user['last_login']); ?>
+                                    <b>Last Played:</b> <?php echo date('M d, Y h:iA', strtotime($user['last_login'])); ?>
                                 </div>
                             </div>
 
