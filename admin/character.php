@@ -6,18 +6,17 @@
     $obj = new ucpProject($pdo);
     require_once __DIR__ . "/../header.php";
 
-    if($obj->isLoggedIn() == false) {
+    if($obj->isLoggedIn() == false || $obj->isUSerAdmin() < 1) {
         header("Location: " . SITE_URL . "/index.php");
         die;
     }
 
     $cid = $_GET['id'];
     $user = $obj->getCharacterData($cid);
-    $check_owner = $obj->isCharacterOwnedByUser($cid, $_SESSION['UID']);
 
     // if $user is null or
     // if no IDs were specified = throw 404 error.
-    if(!$check_owner || empty($user) || !isset($cid)) {
+    if(empty($user) || !isset($cid)) {
         //header("Location:" . SITE_URL . "/user/dashboard.php");
         $obj->throw404();
     }   
@@ -39,16 +38,7 @@
             <div class="row mb-5">
                 <!-- Back to My Characters -->
                 <div class="col">
-                    <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> My Characters</a>
-                </div>
-
-                <div class="col d-flex justify-content-end">
-                    <div class="row">
-                        <!-- Settings -->
-                        <div class="col">
-                            <a href="<?php echo SITE_URL; ?>/user/settings.php" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
-                        </div>
-                    </div>
+                    <a href="<?php echo SITE_URL; ?>/admin/characters.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Characters List</a>
                 </div>
             </div>
 
@@ -161,7 +151,7 @@
                             
                                 <!-- Houses -->
                                 <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
-                                    <a href="<?php echo SITE_URL; ?>/user/house.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <a href="<?php echo SITE_URL; ?>/admin/house.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
                                         <div>
                                             <i class="fas fa-home fa-10x" style="color: #33AA33"></i>
                                             <h1>Houses</h1>
@@ -171,7 +161,7 @@
 
                                 <!-- Businesses -->
                                 <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
-                                    <a href="<?php echo SITE_URL; ?>/user/business.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <a href="<?php echo SITE_URL; ?>/admin/business.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
                                         <div>
                                             <i class="fas fa-building fa-10x"></i>
                                             <h1>Businesses</h1>
@@ -181,7 +171,7 @@
 
                                 <!-- Vehicles -->
                                 <div class="col-xs-12 col-md-4 col-lg-3 col-xl-3 text-center" href="#">
-                                    <a href="<?php echo SITE_URL; ?>/user/vehicle.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <a href="<?php echo SITE_URL; ?>/admin/vehicle.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
                                         <div>
                                             <i class="fas fa-car fa-10x" style="color: #FF0000"></i>
                                             <h1>Vehicles</h1>

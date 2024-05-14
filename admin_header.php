@@ -4,6 +4,10 @@
     </div>
 
     <div class="btn-group btn-group-sm mr-2" role="group">
+        <a href="<?php echo SITE_URL; ?>/admin/characters.php" class="btn btn-dark"><span class="fas fa-users"></span> Characters List</a>
+    </div>
+
+    <div class="btn-group btn-group-sm mr-2" role="group">
         <?php if($obj->isUserAdmin() >= 2): ?>
             <a href="<?php echo SITE_URL; ?>/admin/ban_list.php" class="btn btn-dark"><span class="fas fa-gavel"></span> Ban List</a>
         <?php endif; ?>
