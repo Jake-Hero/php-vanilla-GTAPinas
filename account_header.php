@@ -1,3 +1,5 @@
+<?php include_once 'time.php'; ?>
+
 <div class="row mb-5">
     <!-- Back to Character -->
     <div class="col">

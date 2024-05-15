@@ -11,6 +11,9 @@
         die;
     }
 
+    $page = 'groups.php';
+    $page_name = "Groups";
+
     $gangs = $obj->getGangs();
     $factions = $obj->getFactions();
 ?>
