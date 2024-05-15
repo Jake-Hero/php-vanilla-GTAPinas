@@ -86,7 +86,7 @@
                             <div class="row d-flex justify-content-center">
 
                                 <div class="col-lg-12 col-xl-12 col-md-12 col-xs-12 text-center">
-                                    <img src="<?php echo $obj->getSkinImage(0); ?>" alt="Skin" name="skin_pic" height="300" />
+                                    <img src="<?php echo $obj->getSkinImage(0); ?>" alt="Skin" name="skin_pic" height="300" style="filter: drop-shadow(1px 1px 4px);" />
                                 </div>
 
                                 <!-- Character's Info -->
