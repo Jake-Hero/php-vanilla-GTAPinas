@@ -11,6 +11,9 @@
         die;
     }
 
+    $page = 'turfs.php';
+    $page_name = "Turfs";
+
     $turfs = $obj->getTurfs();
 ?>
 
@@ -21,7 +24,7 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-    <title><?php echo SITE_NAME; ?> - Groups</title>
+    <title><?php echo SITE_NAME; ?> - Turfs</title>
 </head>
 
 <body>

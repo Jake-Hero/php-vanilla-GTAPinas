@@ -10,6 +10,9 @@
         header("Location: " . SITE_URL . "/index.php");
         die;
     }
+
+    $page = 'ban_list.php';
+    $page_name = "Ban List";
 ?>
 
 <!DOCTYPE html>

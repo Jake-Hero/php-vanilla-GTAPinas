@@ -27,7 +27,9 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
-            <div class="row mb-5">
+            <?php include_once __DIR__ . '/../time.php'; ?>
+
+            <div class="row mt-2 mb-5">
                 <!-- Back to My Characters -->
                 <div class="col">
                     <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
