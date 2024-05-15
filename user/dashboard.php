@@ -72,8 +72,8 @@
                                         <!-- Make it clickable to user/character.php?id=['id'] -->
                                         <a href="<?php echo SITE_URL; ?>/user/character.php?id=<?php echo $user['id']; ?>" style="text-decoration: none; color: inherit;">
                                             <div class="card-body bg-white">
-                                                <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
-                                                <h4><?php echo $user['charname']; ?></h4>
+                                                <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" style="filter: drop-shadow(1px 1px 4px);" />
+                                                <h4 class="mt-5"><?php echo $user['charname']; ?></h4>
                                                 <p>
                                                     <b>Online Time:</b> <?php echo $obj->secondsToHMS($user['hours']); ?>
                                                     <p class="text-muted">ID: <?php echo $user['id'] ?></p>
@@ -99,7 +99,7 @@
                                         <?php if($i == 3): ?>
                                             <?php if($vip >= 3): ?>
                                             <a href="<?php echo SITE_URL; ?>/user/create_character.php?slot=<?php echo $i; ?>" style="text-decoration: none; color: inherit;">
-                                                <div class="card-body bg-white">
+                                                <div class="card-body bg-white" style="height: 82%;">
                                                     <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
                                                     <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
 
@@ -110,7 +110,7 @@
                                             <?php else: ?>
                                             <a href="#" style="text-decoration: none; color: inherit;">
                                                 <div class="card-body bg-white">
-                                                    <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="306" />
+                                                    <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="355" />
 
                                                     <h4>Create Character</h4>
                                                     <h5 class="text-danger">for Gold VIP+ only</h5>
@@ -120,7 +120,7 @@
                                             <?php endif; ?>   
                                         <?php else: ?>
                                             <a href="<?php echo SITE_URL; ?>/user/create_character.php?slot=<?php echo $i; ?>" style="text-decoration: none; color: inherit;">
-                                                <div class="card-body bg-white">
+                                                <div class="card-body bg-white" style="height: 82%;">
                                                     <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
                                                     <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
 
