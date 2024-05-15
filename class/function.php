@@ -684,7 +684,7 @@ class ucpProject {
         $skin_file = SITE_URL . '/assets/pictures/skins/undefined.png';
 
         if(isset($skin)) {
-            if(($skin >= 0) && ($skin != 74) && ($skin <= 311)) {
+            if(($skin >= 0 && $skin <= 311) || ($skin <= 20136 && $skin >= 20123)) {
                 // change if a valid skin is detected. scan through the pictures/skins folder.
                 $skin_file = SITE_URL . '/assets/pictures/skins/' . $skin . '.png';
             }
