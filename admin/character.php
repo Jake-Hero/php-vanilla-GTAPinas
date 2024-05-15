@@ -14,6 +14,9 @@
     $cid = $_GET['id'];
     $user = $obj->getCharacterData($cid);
 
+    $page = 'characters.php';
+    $page_name = "Characters";
+
     // if $user is null or
     // if no IDs were specified = throw 404 error.
     if(empty($user) || !isset($cid)) {
@@ -35,8 +38,10 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
-            <div class="row mb-5">
-                <!-- Back to My Characters -->
+            <?php require_once __DIR__ . '/../admin_header.php'; ?>
+
+            <div class="row mt-2 mb-5">
+                <!-- Back to Characters List -->
                 <div class="col">
                     <a href="<?php echo SITE_URL; ?>/admin/characters.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Characters List</a>
                 </div>

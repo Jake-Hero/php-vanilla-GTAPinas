@@ -6,6 +6,9 @@
     $obj = new ucpProject($pdo);
     require_once __DIR__ . "/../header.php";
 
+    $page = 'characters.php';
+    $page_name = "Characters";
+
     if(($obj->isLoggedIn() == false)) {
         header("Location: " . SITE_URL . "/index.php");
         die;

@@ -10,6 +10,9 @@
         header("Location: " . SITE_URL . "/index.php");
         die;
     }
+
+    $page = 'index.php';
+    $page_name = "Dashboard";
 ?>
 
 <!DOCTYPE html>

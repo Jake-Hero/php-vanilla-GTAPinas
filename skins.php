@@ -1,132 +1,49 @@
 <?php 
-    require __DIR__ . '/../autoload.php';
+    require __DIR__ . '/autoload.php';
 
     $dbClass = new DB(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
     $pdo = $dbClass->getConnection();
     $obj = new ucpProject($pdo);
-    require_once __DIR__ . "/../header.php";
-
-    if($obj->isLoggedIn() == false) {
-        header("Location: " . SITE_URL . "/index.php");
-        die;
-    }
-
-    $slot = $_GET['slot'];
-    $exist = $obj->fetchData('characters', 'id', 'slot', $slot);
-    $vip = $obj->fetchData('accounts', 'donator', 'id', $_SESSION['UID']);
-
-    if(!isset($slot) || !empty($exist) || !($slot <= 3 && $slot >= 1) || ($slot == 3 && $vip < 3)) {
-        $obj->throw404();
-    }
+    require_once __DIR__ . "/header.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="../"/>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <title><?php echo SITE_NAME; ?> - Create Character</title>
+    <title><?php echo SITE_NAME; ?> - Skins</title>
 </head>
 
 <body>
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
-            <?php include_once __DIR__ . '/../time.php'; ?>
-
-            <div class="row mb-5">
-                <!-- Back to My Characters -->
-                <div class="col">
-                    <a href="<?php echo SITE_URL; ?>/user/dashboard.php" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Back to My Characters</a>
-                </div>
-
-                <div class="col d-flex justify-content-end">
-                    <div class="row">
-                        <!-- Settings -->
-                        <div class="col">
-                            <a href="<?php echo SITE_URL; ?>/user/settings.php" class="btn btn-dark"><i class="fas fa-cog"></i> Settings</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class='alert alert-info'>
                 <strong>Please <a href="https://www.open.mp/docs/scripting/resources/skins" target="_blank">click here</a> to check for original GTA-SA skin IDs.</strong> 
             </div>
 
-            <div class='alert alert-danger'>
-                <strong><a href="<?php echo SITE_URL; ?>/skins.php" target="_blank">Click here</a> to check for custom skin IDs.</strong> 
-            </div>
-
             <div class="shadow-lg p-3 mb-5 bg-light rounded">
             <!-- Emulate Card -->
-                <div class="container">
-                    <h1 class="text-center mb-4 mt-3">Create Character - Slot <?php echo $slot; ?></h1>
+                <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Skin ID</th>
+                                <th>Model</th>
+                            </tr>
+                        </thead>
 
-                    <form method="POST" action="">
-                        <div class="col-lg-8 col-md-8 col-xs-12 float-none mx-auto">
-                            <div id="ajax">
-                                <?php 
-                                    if(!empty($_SESSION['success_message']))
-                                    {
-                                        echo $_SESSION['success_message'];
-                                        unset($_SESSION['success_message']);
-                                    }
-                                ?>
-                            </div>
-
-                            <div class="row d-flex justify-content-center">
-
-                                <div class="col-lg-12 col-xl-12 col-md-12 col-xs-12 text-center">
-                                    <img src="<?php echo $obj->getSkinImage(0); ?>" alt="Skin" name="skin_pic" height="300" />
-                                </div>
-
-                                <!-- Character's Info -->
-                                <div class="col">
-                                    <input type="number" value="<?php echo $slot; ?>" id="slotForm" hidden />
-
-                                    <div class="form-group">
-                                        <label class="form-label">Character Name</label>
-                                        <input class="form-control" type="text" placeholder="Firstname_Lastname (e.g. John_Doe)" name="char_name" id="charnameForm" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-label">Skin</label>
-                                        <input class="form-control" type="number" min="1" max="299" placeholder="skin id (select your gender first)" name="skin_id" id="skinForm" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-label">Gender</label>
-                                        <select class="form-select" name="gender" id="genderForm">
-                                            <option selected>Select your gender</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-label">Birthday</label>
-                                        <input class="form-control" placeholder="Birthday" name="birth_day" id="bdayForm" data-toggle="datepicker">
-                                    </div>
-
-                                    <div class="py-3 mt-3">
-                                        <button type="submit" class="btn btn-info w-100 text-white" id="createBtn">
-                                            Create Character
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
+                        <tbody>
+                            <?php for($i = 20123; $i <= 20136; $i++): ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><img src="<?php echo $obj->getSkinImage($i); ?>" alt="<?php echo $i; ?>" name="skin_pic" height="300" /></td>
+                            </tr>
+                            <?php endfor; ?>
+                        </tbody>
+                    </table>
                 </div>
             <!-- Emulate Card Ends here -->
             </div>
