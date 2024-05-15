@@ -49,7 +49,7 @@
                                 
                                 <tr>
                                     <td class="align-middle"><?php echo $i; ?></td>
-                                    <td><img src="<?php echo $obj->getSkinImage($d['last_skin']); ?>" alt="<?php echo $d['last_skin'] ?>" height="100" /></td>
+                                    <td><img src="<?php echo $obj->getSkinImage($d['last_skin']); ?>" alt="<?php echo $d['last_skin'] ?>" height="100" style="filter: drop-shadow(1px 1px 4px);" /></td>
                                     <td class="align-middle"><?php echo $d['last_skin']; ?></td>
                                     <td class="align-middle"><?php echo number_format($d['skin_count']); ?></td>
                                 </tr>

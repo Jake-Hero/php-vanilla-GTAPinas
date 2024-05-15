@@ -39,7 +39,7 @@
                             <?php for($i = 20123; $i <= 20136; $i++): ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
-                                <td><img src="<?php echo $obj->getSkinImage($i); ?>" alt="<?php echo $i; ?>" name="skin_pic" height="300" /></td>
+                                <td><img src="<?php echo $obj->getSkinImage($i); ?>" alt="<?php echo $i; ?>" name="skin_pic" height="300" style="filter: drop-shadow(1px 1px 4px);" /></td>
                             </tr>
                             <?php endfor; ?>
                         </tbody>

@@ -68,7 +68,7 @@
 
                         <!-- Character's Skin -->
                         <div class="col-lg-6 col-xl-6 col-md-6 col-xs-12 text-center">
-                            <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" />
+                            <img src="<?php echo $obj->getSkinImage($user['last_skin']); ?>" alt="<?php echo $user['charname'] ?>'s skin" height="300" style="filter: drop-shadow(1px 1px 4px);" />
                         </div>
 
                         <!-- Character's Info -->
