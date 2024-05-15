@@ -25,6 +25,9 @@
         $obj->throw404();
     }
 
+    $page = 'characters.php';
+    $page_name = "Characters";
+
     $owner = $obj->fetchData('characters', 'charname', 'id', $cid);
 ?>
 
@@ -62,6 +65,7 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
+            <?php require_once __DIR__ . '/../admin_header.php'; ?>
             <?php include_once __DIR__ . '/character_header.php'; ?>
 
             <div class="shadow-lg p-3 mb-5 bg-light rounded">

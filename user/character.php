@@ -36,6 +36,8 @@
     <main role="main" class="flex-grow-1 overflow-auto">
         <div class="container">
         <!-- Container -->
+            <?php include_once __DIR__ . '/../time.php'; ?>
+
             <div class="row mb-5">
                 <!-- Back to My Characters -->
                 <div class="col">

@@ -24,6 +24,9 @@ define('DIR_ASSETS',    DIR_ROOT . 'assets' . DIRECTORY_SEPARATOR);
 // Path for Pictures (obsolete)
 define('DIR_PICTURES',  './assets/pictures/');
 
+// timezone set for PHP date & time.
+date_default_timezone_set("Asia/Manila");
+
 ?>
 
 <!-- CSS -->
