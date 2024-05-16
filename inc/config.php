@@ -6,8 +6,14 @@ define('DIR_NAME',      'GTAPinas-Site');
 define('DIR_ROOT',      __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 // Website Name
 define('SITE_NAME',     'GTA Pinas Roleplay');
-// for linking Images & CSS, JS purposes.
+
+$https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "off") ? ('https://') : ('http://');
+
+// for linking Images & CSS, JS purposes. (localhost)
 define('SITE_URL',      'http://' . $_SERVER['HTTP_HOST'] . '/' . DIR_NAME);
+// use for public 
+//define('SITE_URL',      $https . $_SERVER['HTTP_HOST']);
+
 // Project's Developer
 define('SITE_DEV',      'Cipher');
 
@@ -30,9 +36,9 @@ date_default_timezone_set("Asia/Manila");
 ?>
 
 <!-- CSS -->
-<link rel='stylesheet' href="<?php echo SITE_URL ?>/css/style.css">
-<link href= "<?php echo SITE_URL ?>/assets/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet" media="nope!" onload="this.media='all'">
-<link href= "<?php echo SITE_URL ?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="nope!" onload="this.media='all'">
+<link rel="stylesheet preload" href="<?php echo SITE_URL; ?>/css/style.css">
+<link rel="stylesheet preload" href= "<?php echo SITE_URL; ?>/assets/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet" media="nope!" onload="this.media='all'">
+<link rel="stylesheet preload" href= "<?php echo SITE_URL; ?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="nope!" onload="this.media='all'">
 
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -41,4 +47,4 @@ date_default_timezone_set("Asia/Manila");
 <script src="<?php echo SITE_URL; ?>/assets/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Font -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<link rel="stylesheet preload" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
