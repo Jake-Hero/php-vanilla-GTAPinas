@@ -4,14 +4,16 @@
 
 ----
 
-This is a private project, currently being worked on and active.
+This is a project, currently being worked on and active. (Active Website @ http://renegadecommunity.xyz/)
 
-This is a User Control Panel website made for GTA Pinas (Renegade Roleplay), a game server in San Andreas Multiplayer.
+This is a User Control Panel website made for GTA Pinas (Renegade Roleplay Community), a game server in San Andreas Multiplayer.
 
 ----
 
 ### This is purely coded in PHP Vanilla for the back-end. While the front-end design is aided by the Bootstrap Framework and Standard CSS.
 ### The website's database is ran on MySQL (XAMPP) / PhpMyAdmin.
+
+#### This project is done by solely by me, with ideas from aezakmi (Adrian).
 
 ---
 
