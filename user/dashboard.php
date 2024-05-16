@@ -96,44 +96,61 @@
                                 ?>
                                 <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3 text-center">
                                     <div class="shadow-lg p-3 mb-5 bg-body rounded">
-                                        <?php if($i == 3): ?>
-                                            <?php if($vip >= 3): ?>
-                                            <a href="<?php echo SITE_URL; ?>/user/create_character.php?slot=<?php echo $i; ?>" style="text-decoration: none; color: inherit;">
-                                                <div class="card-body bg-white" style="height: 82%;">
-                                                    <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
-                                                    <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
+                                        <?php if($verified == "Verified"): ?>
+
+                                            <?php if($i == 3): ?>
+                                                <?php if($vip >= 3): ?>
+                                                <a href="<?php echo SITE_URL; ?>/user/create_character.php?slot=<?php echo $i; ?>" style="text-decoration: none; color: inherit;">
+                                                    <div class="card-body bg-white" style="height: 82%;">
+                                                        <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
+                                                        <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
+
+                                                        <h4>Create Character</h4>
+                                                        <p><b>Slot <?php echo $i; ?></b></p>
+                                                    </div>
+                                                </a>
+                                                <?php else: ?>
+                                                <a href="#" style="text-decoration: none; color: inherit;">
+                                                    <div class="card-body bg-white">
+                                                        <img src="<?php echo SITE_URL; ?>/assets/pictures/lock.png" alt="Create Character" height="355" />
+
+                                                        <h4>Create Character</h4>
+                                                        <h5 class="text-danger">for Gold VIP+ only</h5>
+                                                        <p><b>Slot <?php echo $i; ?></b></p>
+                                                    </div>
+                                                </a>     
+                                                <?php endif; ?>   
+                                            <?php else: ?>
+                                                <a href="<?php echo SITE_URL; ?>/user/create_character.php?slot=<?php echo $i; ?>" style="text-decoration: none; color: inherit;">
+                                                    <div class="card-body bg-white" style="height: 82%;">
+                                                        <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
+                                                        <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
+
+                                                        <h4>Create Character</h4>
+                                                        <p><b>Slot <?php echo $i; ?></b></p>
+                                                    </div>
+                                                </a>   
+                                            <?php endif; ?>    
+                                            
+                                        <?php else: ?>
+
+                                            <a href="#" style="text-decoration: none; color: inherit;">
+                                                <div class="card-body bg-white">
+                                                    <img src="<?php echo SITE_URL; ?>/assets/pictures/lock.png" alt="Create Character" height="355" />
 
                                                     <h4>Create Character</h4>
+                                                    <h5 class="text-danger">Verify your account first</h5>
                                                     <p><b>Slot <?php echo $i; ?></b></p>
                                                 </div>
                                             </a>
-                                            <?php else: ?>
-                                            <a href="#" style="text-decoration: none; color: inherit;">
-                                                <div class="card-body bg-white">
-                                                    <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="355" />
-
-                                                    <h4>Create Character</h4>
-                                                    <h5 class="text-danger">for Gold VIP+ only</h5>
-                                                    <p><b>Slot <?php echo $i; ?></b></p>
-                                                </div>
-                                            </a>     
-                                            <?php endif; ?>   
-                                        <?php else: ?>
-                                            <a href="<?php echo SITE_URL; ?>/user/create_character.php?slot=<?php echo $i; ?>" style="text-decoration: none; color: inherit;">
-                                                <div class="card-body bg-white" style="height: 82%;">
-                                                    <!--img src="<?php echo SITE_URL; ?>/assets/pictures/adrian.jpg" alt="Create Character" height="325" width="200" /-->
-                                                    <img src="<?php echo SITE_URL; ?>/assets/pictures/skins/undefined.png" alt="Create Character" height="340" />
-
-                                                    <h4>Create Character</h4>
-                                                    <p><b>Slot <?php echo $i; ?></b></p>
-                                                </div>
-                                            </a>   
-                                        <?php endif; ?>                                     
+                                            
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <?php
                             }
                         ?>
+
                     <?php endfor; ?>
                 <!-- List all characters Ends here-->
                 </div>
