@@ -10,9 +10,9 @@ define('SITE_NAME',     'GTA Pinas Roleplay');
 $https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "off") ? ('https://') : ('http://');
 
 // for linking Images & CSS, JS purposes. (localhost)
-define('SITE_URL',      'http://' . $_SERVER['HTTP_HOST'] . '/' . DIR_NAME);
+define('SITE_URL',      '//' . $_SERVER['HTTP_HOST'] . '/' . DIR_NAME);
 // use for public 
-//define('SITE_URL',      $https . $_SERVER['HTTP_HOST']);
+//define('SITE_URL',      '//' . $_SERVER['HTTP_HOST']);
 
 // Project's Developer
 define('SITE_DEV',      'Cipher');
