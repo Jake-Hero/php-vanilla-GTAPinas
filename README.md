@@ -18,4 +18,10 @@ This is a User Control Panel website made for GTA Pinas (Renegade Roleplay), a g
 # Screenshots
 
 ![Homepage](assets/pictures/screenshots/homepage.png)
+Homepage
+
 ![My Characters](assets/pictures/screenshots/mycharacters.png)
+My Characters (no characters owned)
+
+![My Characters](assets/pictures/screenshots/mycharacters_2.png)
+My Characters (with characters owned)
