@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet preload" type="text/css" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js" charset="utf8" type="text/javascript"></script>
 
     <title><?php echo SITE_NAME; ?> - Ban List</title>
