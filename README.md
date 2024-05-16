@@ -10,6 +10,13 @@ This is a User Control Panel website made for GTA Pinas (Renegade Roleplay Commu
 
 ----
 
+# Demo Account:
+
+* Username/Email: test_account (or sample@renegadecommunity.xyz)
+* Password: testrenegade123
+
+----
+
 ### This is purely coded in PHP Vanilla for the back-end. While the front-end design is aided by the Bootstrap Framework and Standard CSS.
 ### The website's database is ran on MySQL (XAMPP) / PhpMyAdmin.
 
