@@ -6,7 +6,7 @@
 
 This is a project, currently being worked on and active. (Active Website @ http://renegadecommunity.xyz/)
 
-This is a User Control Panel website made for GTA Pinas (Renegade Roleplay Community), a game server in San Andreas Multiplayer.
+This is a User Control Panel website made for GTA Pinas (Renegade Community), a game server in San Andreas Multiplayer.
 
 (20/05/24 update) - **This project was transferred to Laravel Framework & different repository.**
 
