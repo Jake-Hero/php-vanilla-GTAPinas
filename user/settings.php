@@ -10,6 +10,8 @@
         header("Location: " . SITE_URL . "/index.php");
         die;
     }
+
+    $name = $obj->fetchData('accounts', 'username', 'id', $_SESSION['UID']);
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +48,15 @@
                 <div class="container">
                     <h1 class="text-center mb-4 mt-3">Settings</h1>
 
+                    <?php $disable = ($name == "test_account") ? "disabled" : "" ?>
+                    <?php if($name == "test_account"): ?>
+
+                    <div class='alert alert-warning'>
+                        <strong>Settings feature is disabled on Demo Account.</strong> 
+                    </div>
+
+                    <?php endif; ?>
+
                     <form method="POST" action="">
                         <div class="col-lg-5 col-md-5 col-xs-12 float-none mx-auto">
                             <div id="ajax">
@@ -60,12 +71,12 @@
 
                             <div class="form-group">
                                 <label class="form-label">New Password</label>
-                                <input class="form-control" type="password" placeholder="Password" name="cur_password" id="passForm" />
+                                <input class="form-control" type="password" placeholder="Password" name="cur_password" id="passForm" <?php echo $disable; ?> />
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Current Password</label>
-                                <input class="form-control" type="password" placeholder="Current Password" name="cur_password" id="curpassForm" />
+                                <input class="form-control" type="password" placeholder="Current Password" name="cur_password" id="curpassForm" <?php echo $disable; ?> />
                             </div>
 
                             <div class="py-3 mt-3">
