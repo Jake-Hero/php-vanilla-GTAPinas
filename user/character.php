@@ -106,13 +106,13 @@
                             <div class="row">
                                 <div class="col">
                                     <?php 
-                                    $number = $obj->fetchData('character_phone', 'phone_number', 'id', $user['id']);
+                                    $number = $obj->fetchData('character_phone', 'phone_number', 'uid', $user['id']);
                                     $number = (isset($number)) ? $number : ("No Phone");
 
-                                    $battery = $obj->fetchData('character_phone', 'phone_battery', 'id', $user['id']);
+                                    $battery = $obj->fetchData('character_phone', 'phone_battery', 'uid', $user['id']);
                                     $battery = (isset($battery)) ? $battery : ("0%");
 
-                                    $load_credits = $obj->fetchData('character_phone', 'phone_load', 'id', $user['id']);
+                                    $load_credits = $obj->fetchData('character_phone', 'phone_load', 'uid', $user['id']);
                                     $load_credits = (isset($load_credits)) ? $load_credits : ("0");
                                     ?>
                                     <b>Phone:</b> <?php echo $number; ?><br/>
