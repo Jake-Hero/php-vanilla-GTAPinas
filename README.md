@@ -2,7 +2,8 @@
 
 ![GTA Pinas Logo](assets/pictures/gtapinas_logo.png)
 
-(20/05/24 update) - **This project was transferred to Laravel Framework & different repository.**
+(20/05/24 update) - **This project was transferred to Laravel Framework & different repository.**\
+
 **Please be advise that this project is under GNU General Public License, make sure to give where credit is due when copying or re-distributing this project.**
 
 ----
