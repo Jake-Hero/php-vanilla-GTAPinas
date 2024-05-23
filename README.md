@@ -2,7 +2,6 @@
 
 ![GTA Pinas Logo](assets/pictures/gtapinas_logo.png)
 
-=======
 (20/05/24 update) - **This project was transferred to Laravel Framework & different repository.**
 
 **Please be advised that this project is under GNU General Public License, make sure to give where credit is due when copying or re-distributing this project.**
@@ -17,7 +16,6 @@ This is a User Control Panel website made for GTA Pinas (Renegade Community), a 
 
 **Please be advise that this project is under GNU General Public License, make sure to give where credit is due when copying or re-distributing this project.**
 
-=======
 **You may view the code of this project, to gather ideas on how to make a proper functioning User Control Panel.**
 
 **Configuration for the database has been intentionally stripped out due to legal reasons, configure your own database.**
@@ -32,7 +30,7 @@ This is a User Control Panel website made for GTA Pinas (Renegade Community), a 
 ----
 
 ### This is purely coded in PHP Vanilla for the back-end. While the front-end design is aided by the Bootstrap Framework and Standard CSS.
-=======
+
 ### This is purely coded in Vanilla PHP for the back-end. While the front-end design is aided by the Bootstrap Framework and Standard CSS.
 
 ### The website's database is ran on MySQL (XAMPP) / PhpMyAdmin.
