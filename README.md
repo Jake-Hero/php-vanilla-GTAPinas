@@ -12,10 +12,6 @@ This is a project, currently being worked on and active. (Active Website @ http:
 
 This is a User Control Panel website made for GTA Pinas (Renegade Community), a game server in San Andreas Multiplayer.
 
-(20/05/24 update) - **This project was transferred to Laravel Framework & different repository.**
-
-**Please be advised that this project is under GNU General Public License, make sure to give where credit is due when copying or re-distributing this project.**
-
 **You may view the code of this project, to gather ideas on how to make a proper functioning User Control Panel.**
 
 **Configuration for the database has been intentionally stripped out due to legal reasons, configure your own database.**
